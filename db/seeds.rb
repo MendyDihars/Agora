@@ -33,7 +33,7 @@ addresses = ["Cours Balguerie Stuttenberg, Bordeaux", "Rue Raze, Bordeaux", "Ave
     bio: Faker::Matz.quote,
     address: addresses.sample,
     password: "123456",
-    email: "demo#{n}@mail.com" })
+    email: "demo#{n}@mail.com")
   n += 1
 end
 
