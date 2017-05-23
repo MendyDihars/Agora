@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 gem 'faker', github: 'stympy/faker'
+gem "geocoder"
 
 gem 'sass-rails'
 gem 'jquery-rails'
