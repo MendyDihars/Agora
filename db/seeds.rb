@@ -1,5 +1,6 @@
 puts "Destroy all :o "
 
+Meeting.destroy_all
 UserSkill.destroy_all
 RequestedSkill.destroy_all
 Skill.destroy_all
