@@ -1,0 +1,6 @@
+<%= simple_form_for :index, html: {class: 'form-inline'},
+    url: teachers_path, method: :get do |f| %>
+  <%= f.input :user_skill, label: false, placeholder: 'What do you want to learn?' %>
+  <%= f.input :address, label: false, placeholder: 'Where?' %>
+  <%= f.submit "Go", class: 'btn btn-primary'%>
+<% end %>
