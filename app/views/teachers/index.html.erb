@@ -1,7 +1,17 @@
-<% @teachers.each do |user| %>
-  <%= user.first_name %>
-  <%= user.address %>
-  <% user.own_skills.each do |skill| %>
-    <%= skill.name %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+      <h2><% @teachers.each do |user| %></h2>
+        <div class="col-xs-6 col-sm-4">
+          <div class="teacher">
+            <p class="text-center"><strong><%= user.first_name %></strong></p>
+            <p><%= user.address %></p>
+            <% user.own_skills.each do |skill| %>
+              <p><%= skill.name %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+

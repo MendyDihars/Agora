@@ -1,0 +1,9 @@
+.teacher {
+  margin: 20px 0;
+  box-shadow: 0 0 5px grey;
+  padding: 5px;
+  border-radius: 5px;
+  &:hover {
+    box-shadow: 0 0 6px darkred;
+  }
+}
