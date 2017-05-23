@@ -1,0 +1,7 @@
+<% @teachers.each do |user| %>
+  <%= user.first_name %>
+  <%= user.address %>
+  <% user.own_skills.each do |skill| %>
+    <%= skill.name %>
+  <% end %>
+<% end %>
