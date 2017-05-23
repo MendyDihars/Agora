@@ -1,0 +1,13 @@
+ <p><%= current_user.own_skills[0].name %></p>
+ <ul>
+  <% @students.each do |student| %>
+    <li>
+      <h2>
+        <%= student.first_name + " " + student.last_name %>
+        <% student.wanted_skills.each do |skill| %>
+          <p><%= skill.name %></p>
+        <% end %>
+      </h2>
+    </li>
+  <% end %>
+ </ul>
