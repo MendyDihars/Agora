@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   has_many :requested_skills
   has_many :user_skills
   has_many :meetings, class_name: 'User', foreign_key: "teacher_id"
