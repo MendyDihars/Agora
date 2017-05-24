@@ -27,4 +27,21 @@
     <h2>  <%= @teacher.first_name %> Reviews</h2>
   </div>
 
+  <div>
+    <%= simple_form_for [@teacher, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.submit "add a review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= @teacher.reviews_received.each do |review| %>
+      <p><%= "⭐" * review.rating %></p>
+      <p><strong><%= User.find(review.student_id).first_name %></strong></p>
+      <p><%= review.content %></p>
+
+    <% end %>
+  </div>
+
 </div>

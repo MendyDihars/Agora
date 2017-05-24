@@ -20,6 +20,7 @@ class TeachersController < ApplicationController
   def show
     @teacher = User.find(params[:id])
     @meeting = Meeting.new
+    @review = Review.new
   end
 
   private
