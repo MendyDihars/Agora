@@ -20,12 +20,7 @@
 
   <div class="meeting">
     <h2>Contact this teacher</h2>
-    <%= simple_form_for @meeting, url: teacher_meetings_path(@teacher), method: :post do |f| %>
-      <%= f.input :skill_id, collection: @teacher.own_skills  %>
-      <%= f.input :happen_at %>
-      <%= f.input :message  %>
-      <%= f.submit %>
-    <% end %>
+    <%= render 'shared/meeting_form' %>
   </div>
 
   <div class="reviews">
