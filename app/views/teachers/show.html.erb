@@ -28,20 +28,20 @@
   </div>
 
   <div>
-    <%= simple_form_for [@teacher, @review] do |f| %>
+    <%= simple_form_for @review, url: teacher_reviews_path(@teacher), method: :post do |f| %>
       <%= f.input :content %>
-      <%= f.input :rating %>
+      <%= f.input :rating, collection: (1..5).to_a, default: 1 %>
       <%= f.submit "add a review", class: "btn btn-primary" %>
     <% end %>
   </div>
 
-  <div>
-    <%= @teacher.reviews_received.each do |review| %>
+  <% @teacher.reviews_received.each do |review| %>
+    <div>
       <p><%= "⭐" * review.rating %></p>
       <p><strong><%= User.find(review.student_id).first_name %></strong></p>
       <p><%= review.content %></p>
-
-    <% end %>
-  </div>
+      <p>Created at : <%= review.created_at.strftime("%b, %d %Y ") %></p>
+    </div>
+  <% end %>
 
 </div>
