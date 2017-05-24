@@ -2,13 +2,25 @@
   <div class="row">
       <h2><% @teachers.each do |user| %></h2>
         <div class="col-xs-6 col-sm-4">
-          <div class="teacher">
-            <p class="text-center"><strong><%= link_to user.first_name, teacher_path(user) %></strong></p>
-            <p><%= user.address %></p>
-            <% user.own_skills.each do |skill| %>
-              <p><%= skill.name %></p>
-            <% end %>
-          </div>
+          <%= link_to teacher_path(user) do %>
+            <div class="teacher">
+              <div class="profile-teacher">
+                <% photos = ["http://diffusionph.cccommunication.biz/jpgok/RepGR/150/150100_13.jpg", "https://s-media-cache-ak0.pinimg.com/736x/42/da/ef/42daef4521a6ebe5ec8a1439e35e7a22.jpg", "http://img0.gtsstatic.com/serie/karadoc_174552_w620.jpg"] %>
+                <%= image_tag photos.sample, class: 'avatar-big' %>
+              </div>
+              <div class="name">
+                <%= user.first_name %>
+              </div>
+              <div class="address">
+                <%= user.address %>
+              </div>
+              <% user.own_skills.each do |skill| %>
+                <div class="skill">
+                  <%= emoji(skill.name) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       <% end %>
   </div>
