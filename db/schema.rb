@@ -10,24 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523130316) do
+ActiveRecord::Schema.define(version: 20170524105238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attachinary_files", force: :cascade do |t|
+    t.string   "attachinariable_type"
+    t.integer  "attachinariable_id"
+    t.string   "scope"
+    t.string   "public_id"
+    t.string   "version"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "format"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.integer  "teacher_id"
-    t.integer  "user_skill_id"
     t.integer  "student_id"
     t.date     "happen_at"
     t.text     "message"
     t.date     "approved_at"
     t.date     "rejected_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "skill_id"
+    t.index ["skill_id"], name: "index_meetings_on_skill_id", using: :btree
     t.index ["student_id"], name: "index_meetings_on_student_id", using: :btree
     t.index ["teacher_id"], name: "index_meetings_on_teacher_id", using: :btree
-    t.index ["user_skill_id"], name: "index_meetings_on_user_skill_id", using: :btree
   end
 
   create_table "requested_skills", force: :cascade do |t|
@@ -78,7 +93,7 @@ ActiveRecord::Schema.define(version: 20170523130316) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "meetings", "user_skills"
+  add_foreign_key "meetings", "skills"
   add_foreign_key "requested_skills", "skills"
   add_foreign_key "requested_skills", "users"
   add_foreign_key "user_skills", "skills"
