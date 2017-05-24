@@ -1,9 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 .teacher {
   margin: 20px 0;
   box-shadow: 0 0 5px grey;
   padding: 5px;
   border-radius: 5px;
+  position: relative;
+  height: 300px;
+  color: black;
   &:hover {
-    box-shadow: 0 0 6px darkred;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+    color: black;
+  }
+  .name {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .profile-teacher {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+  }
+  .address {
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
