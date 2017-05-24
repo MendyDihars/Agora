@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to teacher_path(@teacher)
     else
-      render "teacher/show"
+      render "teachers/show"
     end
   end
 
