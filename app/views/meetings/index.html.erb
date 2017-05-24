@@ -1,6 +1,6 @@
 <div class="container">
   <div class="meeting-info">
-    <% @meetings.each do |meeting|  %>
+    <% @meetings_student.each do |meeting|  %>
       <h3><%= meeting.skill.name %> with <%= meeting.teacher.first_name %></h3>
       <%= meeting.happen_at %>
       <p><strong>Message:</strong> <%= meeting.message %></p>
@@ -11,6 +11,20 @@
       <% else %>
         <p class='btn btn-warning btn-xs'>Pending</p>
       <% end %>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+<hr>
+<hr>
+
+<div class="container">
+  <div class="meetings-info">
+    <% @meetings_teacher.each do |meeting| %>
+      <h3><%= meeting.skill.name %> with student : <%= meeting.student.first_name %></h3>
+      <%= meeting.happen_at %>
+      <p><strong>Message:</strong> <%= meeting.message %></p>
     <% end %>
   </div>
 </div>
