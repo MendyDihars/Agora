@@ -10,6 +10,7 @@ gem 'devise'
 gem 'redis'
 gem 'faker', github: 'stympy/faker'
 gem "geocoder"
+gem "cloudinary"
 
 gem 'sass-rails'
 gem 'jquery-rails'
