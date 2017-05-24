@@ -20,7 +20,10 @@ class TeachersController < ApplicationController
   def show
     @teacher = User.find(params[:id])
     @meeting = Meeting.new
+
   end
+
+  private
 
   def search_params
     params.require(:index).permit(:user_skill, :address)
