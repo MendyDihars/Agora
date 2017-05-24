@@ -18,7 +18,8 @@ class TeachersController < ApplicationController
   end
 
   def show
-    @teachers = User.find(params[:id])
+    @teacher = User.find(params[:id])
+    @meeting = Meeting.new
   end
 
   def search_params

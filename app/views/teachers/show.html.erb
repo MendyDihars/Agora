@@ -1,0 +1,35 @@
+<div class="container padded">
+  <div class="teacher-info">
+    <h1> <img src="https://placehold.it/350x350" class="avatar-large">  <%= @teacher.first_name %></h1>
+    <%= link_to "Contact this teacher", "#", class: "btn btn-primary" %>
+    <div class="bio">
+      <h3>Bio</h3>
+      <p><%= @teacher.bio %></p>
+    </div>
+  </div>
+  <div class="skills">
+    <h2> My skills </h2>
+    <% @teacher.own_skills.each do |skill| %>
+      <p><%= skill.name %></p>
+    <% end %>
+    <h2> I want to learn... </h2>
+    <% @teacher.wanted_skills.each do |skill| %>
+      <p><%= skill.name %></p>
+    <% end %>
+  </div>
+
+  <div class="meeting">
+    <h2>Contact this teacher</h2>
+    <%= simple_form_for @meeting, url: teacher_meetings_path(@teacher), method: :post do |f| %>
+      <%= f.input :user_skill, collection: @teacher.own_skills  %>
+      <%= f.input :happen_at %>
+      <%= f.input :message  %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+  <div class="reviews">
+    <h2>  <%= @teacher.first_name %> Reviews</h2>
+  </div>
+
+</div>
