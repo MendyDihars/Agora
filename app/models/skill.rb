@@ -5,6 +5,7 @@ class Skill < ApplicationRecord
   has_many :meetings
   has_many :users, through: :user_skills
   has_many :users, through: :requested_skills
+  has_many :reviews
 
   validates :name, presence: true
 end
