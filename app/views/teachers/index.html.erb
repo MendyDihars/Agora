@@ -5,7 +5,7 @@
           <%= link_to teacher_path(user) do %>
             <div class="teacher">
               <div class="profile-teacher">
-                <% photos = ["http://diffusionph.cccommunication.biz/jpgok/RepGR/150/150100_13.jpg", "http://kpitalrisk.free.fr/images/stars/56000/s_56548166337_1.jpg", "http://img0.gtsstatic.com/serie/karadoc_174552_w620.jpg"] %>
+                <% photos = ["http://diffusionph.cccommunication.biz/jpgok/RepGR/150/150100_13.jpg", "https://s-media-cache-ak0.pinimg.com/736x/42/da/ef/42daef4521a6ebe5ec8a1439e35e7a22.jpg", "http://img0.gtsstatic.com/serie/karadoc_174552_w620.jpg"] %>
                 <%= image_tag photos.sample, class: 'avatar-big' %>
               </div>
               <div class="name">
@@ -15,8 +15,8 @@
                 <%= user.address %>
               </div>
               <% user.own_skills.each do |skill| %>
-                <div>
-                  He want to learn : <%= skill.name %>
+                <div class="skill">
+                  <%= emoji(skill.name) %>
                 </div>
               <% end %>
             </div>
