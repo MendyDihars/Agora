@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   def create
+<<<<<<< HEAD
     @teacher = User.find(teacher_id)
     @review = Review.new(review_params)
     @review.teacher = @teacher
@@ -17,6 +18,8 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:content, :rating)
   end
+=======
+>>>>>>> add-reviews
 
   end
 
