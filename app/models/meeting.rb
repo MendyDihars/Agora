@@ -4,4 +4,5 @@ class Meeting < ApplicationRecord
   belongs_to :skill
 
   validates :happen_at, presence: true
+  validates :skill, presence: true
 end

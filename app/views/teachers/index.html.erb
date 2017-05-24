@@ -3,7 +3,7 @@
       <h2><% @teachers.each do |user| %></h2>
         <div class="col-xs-6 col-sm-4">
           <div class="teacher">
-            <p class="text-center"><strong><%= user.first_name %></strong></p>
+            <p class="text-center"><strong><%= link_to user.first_name, teacher_path(user) %></strong></p>
             <p><%= user.address %></p>
             <% user.own_skills.each do |skill| %>
               <p><%= skill.name %></p>
