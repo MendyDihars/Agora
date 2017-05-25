@@ -32,7 +32,8 @@ users = [
     bio: "I'm a wizard so, magick is a big part of me... but sometimes when I'm hidden under the Whomping Willow, I'm practicing dance and I love that !",
     url: 'http://media.topito.com/wp-content/uploads/2014/10/harry7.jpg',
     email: "harrypotter@mail.com",
-    skill: "Dance"
+    skill: "Dance",
+    wanted_skill: "Guitar"
   },
   {
     first_name: 'Adalberto',
@@ -41,7 +42,8 @@ users = [
     bio: "I like to persuade others I'm colombian.. hihi. In fact, I'm parisian",
     url: 'https://avatars1.githubusercontent.com/u/23275404?v=3&s=460',
     email: "adalg08@mail.com",
-    skill: "Code"
+    skill: "Code",
+    wanted_skill: "Mechanics"
   },
   {
     first_name: 'Anonymous',
@@ -50,7 +52,8 @@ users = [
     bio: "I'm hacking you right now... lol",
     url: 'http://www.myshirt.fr/838/t-shirt-anonymous.jpg',
     email: "hack@mail.com",
-    skill: "Code"
+    skill: "Code",
+    wanted_skill: "Handyman"
   },
   {
     first_name: 'Mendy',
@@ -59,7 +62,8 @@ users = [
     bio: "I can do some things, I hope I'll can approve you",
     url: 'https://avatars3.githubusercontent.com/u/26514822?v=3&s=460',
     email: "mendy@mail.com",
-    skill: "Code"
+    skill: "Code",
+    wanted_skill: "Guitar"
   },
   {
     first_name: 'Arthur',
@@ -68,7 +72,8 @@ users = [
     bio: "I practice Karate and sometimes, I'm King",
     url: 'https://kaamelott.hypnoseries.tv/photo/119/galerie/Personnages_Principaux/arthur/1arthur-television-magazine-237817-holly95_1_.jpg',
     email: "sanglier-de-cournouailles@mail.com",
-    skill: "Karate"
+    skill: "Karate",
+    wanted_skill: "Code"
   },
   {
     first_name: 'Lara',
@@ -77,7 +82,8 @@ users = [
     bio: "I love archeology and kill each thing that I see.",
     url: 'https://img.generation-nt.com/lara-croft_01B0000001625626.jpg',
     email: "tomb-raider@mail.com",
-    skill: "Karate"
+    skill: "Karate",
+    wanted_skill: "Webdesign"
   },
   {
     first_name: 'Marie',
@@ -86,7 +92,8 @@ users = [
     bio: "I'm an expert in chemistry, I can teach you... wait.. Come back ! COME BACK !",
     url: 'http://lettre.ehess.fr/docannexe/file/4320/marie_curie.jpg',
     email: "mariecurie@mail.com",
-    skill: "Mechanics"
+    skill: "Mechanics",
+    wanted_skill: "Code"
   },
   {
     first_name: 'Gregory',
@@ -95,7 +102,8 @@ users = [
     bio: "I'm a funny guy with a funny face and a funny humor",
     url: 'https://avatars2.githubusercontent.com/u/25842275?v=3&s=460',
     email: "funny-boy@mail.com",
-    skill: "Webdesign"
+    skill: "Webdesign",
+    wanted_skill: "Guitar"
   },
   {
     first_name: 'Denis',
@@ -104,7 +112,8 @@ users = [
     bio: "I can do what you want, I just need to read the doc",
     url: 'https://avatars1.githubusercontent.com/u/26795584?v=3&s=460',
     email: "girauden@mail.com",
-    skill: "Webdesign"
+    skill: "Webdesign",
+    wanted_skill: "Code"
   },
   {
     first_name: 'Sauron',
@@ -113,7 +122,8 @@ users = [
     bio: "I like jewels ! I've a great ring ! Do you want to see it ? Wait.. Where is it??",
     url: 'http://68.media.tumblr.com/5bb6506a2295d000b2dbba7b7d646d0b/tumblr_ng2h3tEy3q1sesi4po1_1280.jpg',
     email: "sauron@mail.com",
-    skill: "Handyman"
+    skill: "Handyman",
+    wanted_skill: "Webdesign"
   },
   {
     first_name: 'Demo-Man',
@@ -123,6 +133,7 @@ users = [
     url: "http://forex-ecole.com/wp-content/uploads/2015/07/requst-a-demo.jpg",
     email: 'demo@mail.com',
     skill: 'Guitar'
+    wanted_skill: "Code"
   }
 ]
 
@@ -169,16 +180,22 @@ puts "User Skills created"
 
 puts "Creating requested skills"
 
-UserSkill.all.each do |user_skill|
-  requested_skill = RequestedSkill.new
-  requested_skill.user_id = user_skill.user_id
-  requested_skill.skill_id = Skill.all.sample.id
-  until requested_skill.skill_id != user_skill.skill_id
-    requested_skill.skill_id = Skill.all.sample.id
+user_length = User.all.length
+num = 0
+
+users.each do |item|
+  while num <= user_length
+    requested_skill = RequestedSkill.new
+    user = User.all[num]
+    requested_skill.user = user
+    skill = Skill.find_by_name(item[:wanted_skill])
+    requested_skill.skill =  skill
+    requested_skill.save!
+    num += 1
+    print "🐹 "
   end
-  requested_skill.save!
 end
 
-print "... done"
+puts "Requested skills created"
 
 puts "Putain, ca a marché 🎉 "
