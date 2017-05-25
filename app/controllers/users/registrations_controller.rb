@@ -10,6 +10,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     create_userskill
   end
 
+  def update
+    super
+    if user_params[:user_skills] != ""
+        user_skills = UserSkill.find(current_user.user_skills.ids.first)
+        user_skills.skill_id = user_params[:user_skills]
+        user_skills.save
+    end
+  end
+
   private
 
   def create_userskill
@@ -22,6 +31,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_skills_params
     params.require(:user).permit(user_skill_ids: [])
+  end
+
+  def user_params
+    params.require(:user).permit(:user_skills)
   end
 
 end
