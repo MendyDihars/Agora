@@ -1,24 +1,32 @@
 <div class="container padded">
-  <div class="teacher-info">
-    <h1> <img src="https://placehold.it/350x350" class="avatar-large">  <%= @teacher.first_name %></h1>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teacherContact">
-      Contact this teacher !
-    </button>
+ <div class="row">
+  <div class="col-sm-4">
+    <div class="teacher-info text-center">
+      <h1> <img src="https://placehold.it/350x350" class="avatar-large">  <%= @teacher.first_name %></h1>
+      <div class="skills">
+        <h4> My skills </h4>
+        <% @teacher.own_skills.each do |skill| %>
+          <p><%= skill.name %></p>
+        <% end %>
+      </div>
+   </div>
+  </div>
+  <div class="col-sm-8">
     <div class="bio">
       <h3>Bio</h3>
       <p><%= @teacher.bio %></p>
+      <h4> I want to learn... </h4>
+      <% @teacher.wanted_skills.each do |skill| %>
+        <p><%= skill.name %></p>
+      <% end %>
     </div>
   </div>
-  <div class="skills">
-    <h2> My skills </h2>
-    <% @teacher.own_skills.each do |skill| %>
-      <p><%= skill.name %></p>
-    <% end %>
-    <h2> I want to learn... </h2>
-    <% @teacher.wanted_skills.each do |skill| %>
-      <p><%= skill.name %></p>
-    <% end %>
-  </div>
+ </div>
+<div class="contact-teacher-btn text-center">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teacherContact">
+    Contact this teacher !
+  </button>
+</div>
 
   <div class="modal fade" id="teacherContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -35,23 +43,27 @@
       </div>
     </div>
   </div>
+</div>
+<div class="reviews">
+ <div class="container">
+    <div class="row">
+      <div class="text-center">
+        <h3>  <%= @teacher.first_name %> Reviews</h3>
 
-  <div class="reviews">
-    <h2>  <%= @teacher.first_name %> Reviews</h2>
-  </div>
+        <% reviews = @teacher.reviews_received.sort_by { |review| review.created_at }.reverse %>
+        <% reviews.each do |review| %>
+          <div>
+            <p><%= "⭐" * review.rating %></p>
+            <p><strong><%= User.find(review.student_id).first_name %></strong></p>
+            <p><%= review.content %></p>
+            <p>Created at : <%= review.created_at.strftime("%b, %d %Y ") %></p>
+          </div>
+        <% end %>
 
-  <div>
-    <%= render "shared/review_form" %>
-  </div>
-
-  <% reviews = @teacher.reviews_received.sort_by { |review| review.created_at }.reverse %>
-  <% reviews.each do |review| %>
-    <div>
-      <p><%= "⭐" * review.rating %></p>
-      <p><strong><%= User.find(review.student_id).first_name %></strong></p>
-      <p><%= review.content %></p>
-      <p>Created at : <%= review.created_at.strftime("%b, %d %Y ") %></p>
+        <div>
+          <%= render "shared/review_form" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
+  </div>
 </div>

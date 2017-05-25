@@ -3,8 +3,10 @@
   border-radius: 50%;
 }
 .avatar-large {
-  width: 50px;
+  width: 100px;
   border-radius: 50%;
+  border: 1px $brand-primary solid;
+  padding: 5px;
 }
 .avatar-bordered {
   width: 30px;
