@@ -12,17 +12,14 @@
             <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
             <%= f.input :password_confirmation, required: true %>
             <%= f.input :address, required: true, autofocus: true %>
+            <%= f.input :last_name, autofocus: true %>
+            <%= f.input :first_name, autofocus: true %>
             <%= f.input :age, autofocus: true %>
             <%= f.input :bio, autofocus: true %>
+            <div>
+              <%= f.input :user_skills, collection: Skill.all, class: "select2-container select2-container-multi select2", default: 1 %>
+            </div>
 
-            <%= f.simple_fields_for :user_skills, resource.user_skills.new do |ff| %>
-
-                 <%= render 'user_skill_fields', f: ff %>
-
-            <% end %>
-            <div class="links">
-                   <%= link_to_add_association 'add skill', f, :user_skills %>
-                 </div>
             <%= f.input :photo, as: :attachinary %>
           </div>
 
@@ -36,10 +33,4 @@
     </div>
   </div>
 </div>
-<!--   #tasks
-    = f.simple_fields_for :tasks do |task|
-      = render 'task_fields', f: task
-    .links
-      = link_to_add_association 'add task', f, :tasks
-  = f.submit -->
 

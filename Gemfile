@@ -14,7 +14,7 @@ gem "cloudinary"
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
-gem "cocoon"
+gem 'rails-assets-select2-bootstrap3-css', source: 'https://rails-assets.org'
 
 gem 'sass-rails'
 gem 'jquery-rails'
