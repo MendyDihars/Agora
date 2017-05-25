@@ -18,7 +18,12 @@ skills = [
   { name: "Code" },
   { name: "Painting" }
 ]
-Skill.create!(skills)
+skills.each do |item|
+  skill = Skill.new
+  skill.name = item[:name]
+  skill.save!
+  print "🏩 "
+end
 
 puts  "Skills created"
 
@@ -132,7 +137,7 @@ users = [
     bio: "I'm a demo !",
     url: "http://forex-ecole.com/wp-content/uploads/2015/07/requst-a-demo.jpg",
     email: 'demo@mail.com',
-    skill: 'Guitar'
+    skill: 'Guitar',
     wanted_skill: "Code"
   }
 ]
