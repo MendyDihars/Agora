@@ -44,14 +44,13 @@
     </div>
   </div>
 </div>
+
 <div class="reviews">
  <div class="container">
     <div class="row">
       <div class="text-center">
         <h3>  <%= @teacher.first_name %> Reviews</h3>
-
-        <% reviews = @teacher.reviews_received.sort_by { |review| review.created_at }.reverse %>
-        <% reviews.each do |review| %>
+        <% @reviews.each do |review| %>
           <div>
             <p><%= "⭐" * review.rating %></p>
             <p><strong><%= User.find(review.student_id).first_name %></strong></p>
@@ -59,9 +58,12 @@
             <p>Created at : <%= review.created_at.strftime("%b, %d %Y ") %></p>
           </div>
         <% end %>
-
         <div>
-          <%= render "shared/review_form" %>
+          <% if @is_authorized == true %>
+            <%= render "shared/review_form" %>
+          <% else %>
+            <h3>You can't comment</h3>
+          <% end %>
         </div>
       </div>
     </div>
