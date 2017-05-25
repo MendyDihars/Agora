@@ -19,6 +19,4 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :address, presence: true
 
-  # accepts_nested_attributes_for :user_skills
-  # accepts_nested_attributes_for :own_skills
 end
