@@ -1,7 +1,8 @@
 class MeetingsController < ApplicationController
 
   def index
-    @meetings = Meeting.all
+    @meetings_studend = current_user.meetings_student
+    @meetings_teacher = current_user.meetings_teacher
   end
 
   def create
@@ -15,6 +16,22 @@ class MeetingsController < ApplicationController
     else
       render 'teachers/show'
     end
+  end
+
+  def approved
+    meeting = Meeting.find(params[:id])
+    meeting.approved_at = Date.today
+    meeting.save
+    flash[:notice] = "Meeting approved !"
+    redirect_to meetings_path
+  end
+
+  def rejected
+    meeting = Meeting.find(params[:id])
+    meeting.rejected_at = Date.today
+    meeting.save
+    flash[:alert] = "Meeting rejected !"
+    redirect_to meetings_path
   end
 
   private
