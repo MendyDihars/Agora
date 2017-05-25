@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def create_userskill
-    userskill = UserSkill.new(skill_id: user_skills_params[:user_skill_ids][1])
+    userskill = UserSkill.new(skill_id: user_params[:user_skills].to_i)
     if current_user != nil
       userskill.user_id = current_user.id
       userskill.save
