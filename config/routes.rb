@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
   resources :meetings, only: [:index]
+
+  patch '/meeting/:id/approved', to: "meetings#approved", as: "approved_meeting"
+  patch '/meeting/:id/rejected', to: "meetings#rejected", as: "rejected_meeting"
+
   resources :students, only: [:index]
 end

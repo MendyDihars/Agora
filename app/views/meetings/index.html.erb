@@ -1,9 +1,43 @@
+<h2 class="text-center meeting-h2">New knowledges</h2>
+
 <div class="container">
-  <div class="meeting-info">
-    <% @meetings.each do |meeting|  %>
-      <h3><%= meeting.skill.name %> with <%= meeting.teacher.first_name %></h3>
-      <%= meeting.happen_at %>
-      <p><strong>Message:</strong> <%= meeting.message %></p>
+  <div class="row">
+    <% @meetings_studend.each do |meeting|  %>
+      <div class="col-sm-6">
+        <div class="meeting-info marged">
+          <div class="meeting-name"><%= meeting.teacher.first_name %> <%= meeting.teacher.last_name %></div>
+          <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
+          <div class="meeting-date"><%= meeting.happen_at.strftime('%A %d %b') %></div>
+          <p class="meeting-message"><%= meeting.message %></p>
+            <div class="status"><%= raw(status(meeting.approved_at, meeting.rejected_at)) %></div>
+          <span class="meeting-title"><%= meeting.skill.name %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<h2 class="text-center meeting-h2">Share your knowledge</h2>
+
+<div class="container">
+  <div class="row">
+    <% @meetings_teacher.each do |meeting|  %>
+      <div class="col-sm-6">
+        <div class="meeting-progress marged">
+          <div class="meeting-name"><%= meeting.student.first_name %> <%= meeting.student.last_name %></div>
+          <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
+          <div class="meeting-date"><%= meeting.happen_at.strftime('%A %d %b') %></div>
+          <p class="meeting-message"><%= meeting.message %></p>
+            <div class="status">
+              <% if meeting.approved_at.nil? && meeting.rejected_at.nil? %>
+                <span><%= link_to 'Approve', approved_meeting_path(meeting), method: :patch, class: 'btn btn-success btn-xs' %> <%= link_to 'Reject', rejected_meeting_path(meeting), method: :patch, class: 'btn btn-danger btn-xs' %> </span>
+              <% else %>
+                <%= raw(status(meeting.approved_at, meeting.rejected_at)) %>
+              <% end %>
+            </div>
+          <span class="meeting-title"><%= meeting.skill.name %></span>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
