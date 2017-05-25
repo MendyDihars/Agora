@@ -31,7 +31,8 @@ users = [
     age: 17,
     bio: "I'm a wizard so, magick is a big part of me... but sometimes when I'm hidden under the Whomping Willow, I'm practicing dance and I love that !",
     url: 'http://media.topito.com/wp-content/uploads/2014/10/harry7.jpg',
-    email: "harrypotter@mail.com"
+    email: "harrypotter@mail.com",
+    skill: "Dance"
   },
   {
     first_name: 'Adalberto',
@@ -39,7 +40,8 @@ users = [
     age: 25,
     bio: "I like to persuade others I'm colombian.. hihi. In fact, I'm parisian",
     url: 'https://avatars1.githubusercontent.com/u/23275404?v=3&s=460',
-    email: "adalg08@mail.com"
+    email: "adalg08@mail.com",
+    skill: "Code"
   },
   {
     first_name: 'Anonymous',
@@ -47,7 +49,8 @@ users = [
     age: 0,
     bio: "I'm hacking you right now... lol",
     url: 'http://www.myshirt.fr/838/t-shirt-anonymous.jpg',
-    email: "hack@mail.com"
+    email: "hack@mail.com",
+    skill: "Code"
   },
   {
     first_name: 'Mendy',
@@ -55,7 +58,8 @@ users = [
     age: 22,
     bio: "I can do some things, I hope I'll can approve you",
     url: 'https://avatars3.githubusercontent.com/u/26514822?v=3&s=460',
-    email: "mendy@mail.com"
+    email: "mendy@mail.com",
+    skill: "Code"
   },
   {
     first_name: 'Arthur',
@@ -63,7 +67,8 @@ users = [
     age: 30,
     bio: "I practice Karate and sometimes, I'm King",
     url: 'https://kaamelott.hypnoseries.tv/photo/119/galerie/Personnages_Principaux/arthur/1arthur-television-magazine-237817-holly95_1_.jpg',
-    email: "sanglier-de-cournouailles@mail.com"
+    email: "sanglier-de-cournouailles@mail.com",
+    skill: "Karate"
   },
   {
     first_name: 'Lara',
@@ -71,7 +76,8 @@ users = [
     age: 28,
     bio: "I love archeology and kill each thing that I see.",
     url: 'https://img.generation-nt.com/lara-croft_01B0000001625626.jpg',
-    email: "tomb-raider@mail.com"
+    email: "tomb-raider@mail.com",
+    skill: "Karate"
   },
   {
     first_name: 'Marie',
@@ -79,7 +85,8 @@ users = [
     age: 150,
     bio: "I'm an expert in chemistry, I can teach you... wait.. Come back ! COME BACK !",
     url: 'http://lettre.ehess.fr/docannexe/file/4320/marie_curie.jpg',
-    email: "mariecurie@mail.com"
+    email: "mariecurie@mail.com",
+    skill: "Mechanics"
   },
   {
     first_name: 'Gregory',
@@ -87,7 +94,8 @@ users = [
     age: 33,
     bio: "I'm a funny guy with a funny face and a funny humor",
     url: 'https://avatars2.githubusercontent.com/u/25842275?v=3&s=460',
-    email: "funny-boy@mail.com"
+    email: "funny-boy@mail.com",
+    skill: "Webdesign"
   },
   {
     first_name: 'Denis',
@@ -95,15 +103,17 @@ users = [
     age: 28,
     bio: "I can do what you want, I just need to read the doc",
     url: 'https://avatars1.githubusercontent.com/u/26795584?v=3&s=460',
-    email: "girauden@mail.com"
+    email: "girauden@mail.com",
+    skill: "Webdesign"
   },
   {
-    first_name: 'Denis',
-    last_name: 'Giraud',
-    age: 28,
-    bio: "I can do what you want, I just need to read the doc",
-    url: 'https://avatars1.githubusercontent.com/u/26795584?v=3&s=460',
-    email: "girauden@mail.com"
+    first_name: 'Sauron',
+    last_name: 'Mordor',
+    age: 600,
+    bio: "I like jewels ! I've a great ring ! Do you want to see it ? Wait.. Where is it??",
+    url: 'http://68.media.tumblr.com/5bb6506a2295d000b2dbba7b7d646d0b/tumblr_ng2h3tEy3q1sesi4po1_1280.jpg',
+    email: "sauron@mail.com",
+    skill: "Handyman"
   },
   {
     first_name: 'Demo-Man',
@@ -111,7 +121,8 @@ users = [
     age: 35,
     bio: "I'm a demo !",
     url: "http://forex-ecole.com/wp-content/uploads/2015/07/requst-a-demo.jpg",
-    email: 'demo@mail.com'
+    email: 'demo@mail.com',
+    skill: 'Guitar'
   }
 ]
 
@@ -132,9 +143,10 @@ users.each do |item|
   user.email = item[:email]
   user.photo_url = item[:url]
   print "😜 "
+  user.save!
 end
 
-print "... done"
+puts "Users created"
 
 puts "Creating user skills"
 User.all.each do |user|
