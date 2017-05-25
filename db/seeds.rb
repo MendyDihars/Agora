@@ -161,7 +161,7 @@ users.each do |item|
   print "😜 "
   user.save!
 end
-
+puts ""
 puts "Users created"
 puts "Creating user skills"
 
@@ -169,18 +169,17 @@ user_length = User.all.length
 num = 0
 
 users.each do |item|
-  while num <= user_length
-    user_skill = UserSkill.new
-    user = User.all[num]
-    user_skill.user = user
-    skill = Skill.find_by_name(item[:skill])
-    user_skill.skill =  skill
-    user_skill.save!
-    num += 1
-    print "💛 "
-  end
+  user_skill = UserSkill.new
+  user = User.all
+  user_skill.user = user[num]
+  skill = Skill.find_by_name(item[:skill])
+  user_skill.skill =  skill
+  user_skill.save!
+  num += 1
+  print "💛 "
 end
 
+puts ""
 puts "User Skills created"
 
 puts "Creating requested skills"
@@ -189,18 +188,16 @@ user_length = User.all.length
 num = 0
 
 users.each do |item|
-  while num <= user_length
-    requested_skill = RequestedSkill.new
-    user = User.all[num]
-    requested_skill.user = user
-    skill = Skill.find_by_name(item[:wanted_skill])
-    requested_skill.skill =  skill
-    requested_skill.save!
-    num += 1
-    print "🐹 "
-  end
+  requested_skill = RequestedSkill.new
+  user = User.all
+  requested_skill.user = user[num]
+  skill = Skill.find_by_name(item[:wanted_skill])
+  requested_skill.skill =  skill
+  requested_skill.save!
+  num += 1
+  print "🐹 "
 end
-
+puts ""
 puts "Requested skills created"
 
 puts "Putain, ca a marché 🎉 "
