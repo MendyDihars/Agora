@@ -8,13 +8,7 @@
           <h3><%= meeting.skill.name %> with <%= meeting.teacher.first_name %></h3>
           <%= meeting.happen_at %>
           <p><strong>Message:</strong> <%= meeting.message %></p>
-          <% if meeting.approved_at != nil %>
-            <p class='btn btn-success btn-xs'>Approved</p>
-          <% elsif meeting.rejected_at != nil %>
-            <p class='btn btn-danger btn-xs'>Rejected</p>
-          <% else %>
-            <p class='btn btn-warning btn-xs'>Pending</p>
-          <% end %>
+            <%= raw(status(meeting.approved_at, meeting.rejected_at)) %>
         </div>
       </div>
     <% end %>
