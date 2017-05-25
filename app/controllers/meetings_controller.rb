@@ -17,6 +17,20 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def approved
+    meeting = Meeting.find(params[:id])
+    meeting.approved_at = Date.today
+    meeting.save
+    redirect_to meetings_path
+  end
+
+  def rejected
+    meeting = Meeting.find(params[:id])
+    meeting.rejected_at = Date.today
+    meeting.save
+    redirect_to meetings_path
+  end
+
   private
 
   def meeting_params

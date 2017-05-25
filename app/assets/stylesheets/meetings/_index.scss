@@ -1,12 +1,69 @@
+.meeting-h2 {
+  font-family: 'Poppins', sans-serif;
+}
 .meeting-info {
-  border-top: 5px solid #75ab00;
-  border-left: 5px solid #75ab00;
-  border-radius: 15px 5px 0 5px;
+  border-bottom: 5px solid #75ab00;
+  border-radius: 0 0 5px 5px;
   padding: 5px 15px;
+  position: relative;
+  height: 125px;
 }
 .meeting-progress {
   border-bottom: 5px solid #b2b800;
-  border-right: 5px solid #b2b800;
-  border-radius: 0 5px 15px 5px;
+  border-radius: 0 0 5px 5px;
   padding: 5px 15px;
+  position: relative;
+  height: 125px;
+}
+.meeting-title {
+  font-size: 18px;
+  position: absolute;
+  left: 5;
+  bottom: -15px;
+  background: white;
+  padding: 3px;
+}
+.meeting-message {
+  position: absolute;
+  left: 20px;
+  bottom: 15px;
+  font-style: italic;
+  font-size: 13px;
+}
+.meeting-name {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  font-weight: bold;
+}
+.meeting-created-date {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-style: italic;
+}
+.meeting-date {
+  position: absolute;
+  left: 20px;
+  bottom: 55px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 1px grey;
+}
+.status {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+.status-approved {
+  color: $brand-success;
+  font-size: 16px;
+}
+.status-rejected {
+  color: $brand-danger;
+  font-size: 16px;
+}
+.status-pending {
+  color: $brand-info;
+  font-size: 16px;
 }

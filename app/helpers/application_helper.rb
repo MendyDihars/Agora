@@ -14,11 +14,11 @@ module ApplicationHelper
 
   def status(approved, rejected)
     if approved != nil
-      "<p class='btn btn-success btn-xs'>Approved</p>"
+      "<p class='status-approved'>Approved</p>"
     elsif rejected != nil
-      "<p class='btn btn-danger btn-xs'>Rejected</p>"
+      "<p class='status-rejected'>Rejected</p>"
     else
-      "<p class='btn btn-warning btn-xs'>Pending</p>"
+      "<p class='status-pending'>Pending</p>"
     end
   end
 end
