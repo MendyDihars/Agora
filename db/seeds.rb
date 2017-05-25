@@ -20,9 +20,28 @@ skills = [
 ]
 Skill.create!(skills)
 
-print "... done"
+puts  "Skills created"
 
 puts "Creating users"
+
+users = [
+  {
+    first_name: 'Harry'
+    last_name: 'Potter'
+    age: 17
+    bio: "I'm a wizard so, magick is a big part of me... but sometimes when I'm hidden under the Whomping Willow, I'm practicing dance and I love that !"
+    url: 'http://media.topito.com/wp-content/uploads/2014/10/harry7.jpg'
+    email: "harrypotter@mail.com"
+  },
+  {
+    first_name: 'Adalberto'
+    last_name: 'Potter'
+    age: 17
+    bio: "I'm a wizard so, magick is a big part of me... but sometimes when I'm hidden under the Whomping Willow, I'm practicing dance and I love that !"
+    url: 'http://media.topito.com/wp-content/uploads/2014/10/harry7.jpg'
+    email: "harrypotter@mail.com"
+  },
+]
 
 n = 1
 addresses = ["Cours Balguerie Stuttenberg, Bordeaux", "Rue Raze, Bordeaux", "Avenue Abadie, Bordeaux", "Rue du Palais Gallien, Bordeaux", "Saint Michel, Bordeaux"]
