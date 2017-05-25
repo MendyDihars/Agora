@@ -21,6 +21,7 @@ class MeetingsController < ApplicationController
     meeting = Meeting.find(params[:id])
     meeting.approved_at = Date.today
     meeting.save
+    flash[:notice] = "Meeting approved !"
     redirect_to meetings_path
   end
 
@@ -28,6 +29,7 @@ class MeetingsController < ApplicationController
     meeting = Meeting.find(params[:id])
     meeting.rejected_at = Date.today
     meeting.save
+    flash[:alert] = "Meeting rejected !"
     redirect_to meetings_path
   end
 
