@@ -1,30 +1,36 @@
+<h2 class="text-center">New knowledge</h2>
+
 <div class="container">
-  <div class="meeting-info">
-    <% @meetings_student.each do |meeting|  %>
-      <h3><%= meeting.skill.name %> with <%= meeting.teacher.first_name %></h3>
-      <%= meeting.happen_at %>
-      <p><strong>Message:</strong> <%= meeting.message %></p>
-      <% if meeting.approved_at != nil %>
-        <p class='btn btn-success btn-xs'>Approved</p>
-      <% elsif meeting.rejected_at != nil %>
-        <p class='btn btn-danger btn-xs'>Rejected</p>
-      <% else %>
-        <p class='btn btn-warning btn-xs'>Pending</p>
-      <% end %>
+  <div class="row">
+    <% @meetings_studend.each do |meeting|  %>
+      <div class="col-sm-6">
+        <div class="meeting-info marged">
+          <h3><%= meeting.skill.name %> with <%= meeting.teacher.first_name %></h3>
+          <%= meeting.happen_at %>
+          <p><strong>Message:</strong> <%= meeting.message %></p>
+          <% if meeting.approved_at != nil %>
+            <p class='btn btn-success btn-xs'>Approved</p>
+          <% elsif meeting.rejected_at != nil %>
+            <p class='btn btn-danger btn-xs'>Rejected</p>
+          <% else %>
+            <p class='btn btn-warning btn-xs'>Pending</p>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
 
-<hr>
-<hr>
-<hr>
+<h2 class="text-center">Share your knowledge</h2>
 
 <div class="container">
-  <div class="meetings-info">
+  <div class="row">
     <% @meetings_teacher.each do |meeting| %>
-      <h3><%= meeting.skill.name %> with student : <%= meeting.student.first_name %></h3>
-      <%= meeting.happen_at %>
-      <p><strong>Message:</strong> <%= meeting.message %></p>
+      <div class="col-sm-6">
+        <div class="meeting-progress marged">
+          <%= meeting.skill.name %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
