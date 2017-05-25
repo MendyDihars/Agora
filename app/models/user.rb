@@ -9,15 +9,16 @@ class User < ApplicationRecord
 
   has_attachment :photo
   has_many :requested_skills
-  has_many :user_skills
+  has_many :user_skills, inverse_of: :user
   has_many :meetings, class_name: 'User', foreign_key: "teacher_id"
   has_many :meetings, class_name: 'User', foreign_key: "student_id"
   has_many :own_skills, through: :user_skills, source: :skill
   has_many :wanted_skills, through: :requested_skills, source: :skill
 
-
-
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
+
+  accepts_nested_attributes_for :user_skills
+  accepts_nested_attributes_for :own_skills
 end
