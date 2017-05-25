@@ -1,6 +1,6 @@
 <%= simple_form_for Meeting.new, url: teacher_meetings_path(@teacher), method: :post do |f| %>
-  <%= f.input :skill_id, collection: @teacher.own_skills  %>
+  <%= f.input :skill_id, collection: @teacher.own_skills, selected: 1  %>
   <%= f.input :happen_at %>
   <%= f.input :message  %>
-  <%= f.submit %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

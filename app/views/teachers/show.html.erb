@@ -1,7 +1,9 @@
 <div class="container padded">
   <div class="teacher-info">
     <h1> <img src="https://placehold.it/350x350" class="avatar-large">  <%= @teacher.first_name %></h1>
-    <%= link_to "Contact this teacher", "#", class: "btn btn-primary" %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teacherContact">
+      Contact this teacher !
+    </button>
     <div class="bio">
       <h3>Bio</h3>
       <p><%= @teacher.bio %></p>
@@ -18,9 +20,20 @@
     <% end %>
   </div>
 
-  <div class="meeting">
-    <h2>Contact this teacher</h2>
-    <%= render 'shared/meeting_form' %>
+  <div class="modal fade" id="teacherContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Send a meeting request</h4>
+        </div>
+        <div class="modal-body">
+          <div class="meeting">
+            <%= render 'shared/meeting_form' %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="reviews">

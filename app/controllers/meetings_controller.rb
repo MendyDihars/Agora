@@ -10,6 +10,7 @@ class MeetingsController < ApplicationController
     @meeting.student = current_user
     @meeting.teacher = @teacher
     if @meeting.save
+      flash[:notice] = "Meeting request sended !"
       redirect_to meetings_path
     else
       render 'teachers/show'
