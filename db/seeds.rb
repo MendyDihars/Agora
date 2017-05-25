@@ -147,16 +147,25 @@ users.each do |item|
 end
 
 puts "Users created"
-
 puts "Creating user skills"
-User.all.each do |user|
-  user_skill = UserSkill.new
-  user_skill.user_id = user.id
-  user_skill.skill_id = Skill.all.sample.id
-  user_skill.save!
+
+user_length = User.all.length
+num = 0
+
+users.each do |item|
+  while num <= user_length
+    user_skill = UserSkill.new
+    user = User.all[num]
+    user_skill.user = user
+    skill = Skill.find_by_name(item[:skill])
+    user_skill.skill =  skill
+    user_skill.save!
+    num += 1
+    print "💛 "
+  end
 end
 
-print "... done"
+puts "User Skills created"
 
 puts "Creating requested skills"
 
