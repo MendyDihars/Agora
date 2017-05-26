@@ -1,37 +1,39 @@
+.index-search-form {
+  padding: 20px 0;
+  background:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("https://images.pexels.com/photos/29066/pexels-photo-29066.jpg?w=940&h=650&auto=compress&cs=tinysrgb");
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  h2 {
+    font-weight: bold;
+    font-family: 'Poppins';
+  }
+}
+
 .teacher {
   margin: 20px 0;
-  box-shadow: 0 0 5px grey;
   padding: 5px;
-  border-radius: 5px;
   position: relative;
-  height: 200px;
+  height: 150px;
   color: black;
-  &:hover {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
-    color: black;
+  .profile-teacher {
+    transition: 0.2s;
+  }
+  .profile-teacher:hover {
+    transform: scale(1.05);
+  }
+  a {
+    text-decoration: none;
+  }
+  .teacher-info {
+    padding-top: 15px;
+    padding-bottom: 5px;
   }
   .name {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    font-size: 20px;
     font-family: 'Poppins', sans-serif;
   }
-  .profile-teacher {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-  }
   .address {
-    position: absolute;
-    bottom: 15px;
-    left: 10px;
-    &:hover {
-      text-decoration: none;
-    }
-  }
-  .skill {
-    position: absolute;
-    left: 40%;
-    bottom: 40%;
+    font-weight: lighter;
   }
 }
