@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   end
   resources :meetings, only: [:index]
 
-  patch '/meeting/:id/approved', to: "meetings#approved", as: "approved_meeting"
-  patch '/meeting/:id/rejected', to: "meetings#rejected", as: "rejected_meeting"
+  patch '/meeting/:id/status', to: "meetings#change_status", as: "status_meeting"
 
   resources :students, only: [:index]
 end
