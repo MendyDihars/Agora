@@ -2,11 +2,12 @@
  <div class="row">
   <div class="col-sm-4">
     <div class="teacher-info text-center">
-      <h1> <img src="https://placehold.it/350x350" class="avatar-large">  <%= @teacher.first_name %></h1>
+      <%= cl_image_tag @teacher.photo.path, class: "avatar-x-large" %>
+      <h1> <%= @teacher.first_name %> </h1>
       <div class="skills">
-        <h4> My skills </h4>
+        <h4> Skills </h4>
         <% @teacher.own_skills.each do |skill| %>
-          <p><%= skill.name %></p>
+          <p><span class="skill_back"><%= skill.name.downcase %></span></p>
         <% end %>
       </div>
    </div>
@@ -15,17 +16,19 @@
     <div class="bio">
       <h3>Bio</h3>
       <p><%= @teacher.bio %></p>
-      <h4> I want to learn... </h4>
+    </div>
+    <div class="contact-teacher-btn">
+      <span type="button" class="contact-button" data-toggle="modal" data-target="#teacherContact">
+        CONTACT
+      </span>
+    </div>
+    <div class="wanted_skills">
+      <h4> I would like to learn... </h4>
       <% @teacher.wanted_skills.each do |skill| %>
-        <p><%= skill.name %></p>
+        <p><span class="skill_back"><%= skill.name.downcase %></span></p>
       <% end %>
     </div>
   </div>
- </div>
-<div class="contact-teacher-btn text-center">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teacherContact">
-    Contact this teacher !
-  </button>
 </div>
 
   <div class="modal fade" id="teacherContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -49,23 +52,22 @@
  <div class="container">
     <div class="row">
       <div class="text-center">
-        <h3>  <%= @teacher.first_name %> Reviews</h3>
+        <h3> What people said about <%= @teacher.first_name %> </h3>
         <% @reviews.each do |review| %>
           <div>
             <p><%= "⭐" * review.rating %></p>
-            <p><strong><%= User.find(review.student_id).first_name %></strong></p>
             <p><%= review.content %></p>
-            <p>Created at : <%= review.created_at.strftime("%b, %d %Y ") %></p>
+            <p id="name-link"><strong><%= link_to review.student.first_name, teacher_path(review.student) %></strong> on <%= review.created_at.strftime("%b, %d %Y ") %></p>
           </div>
         <% end %>
         <div>
           <% if @is_authorized == true %>
+          <h3> Add your comment about <%= @teacher.first_name %> </h3>
             <%= render "shared/review_form" %>
-          <% else %>
-            <h3>You can't comment</h3>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
