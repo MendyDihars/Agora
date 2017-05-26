@@ -28,13 +28,20 @@
           <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
           <div class="meeting-date"><%= meeting.happen_at.strftime('%A %d %b') %></div>
           <p class="meeting-message"><%= meeting.message %></p>
-            <div class="status">
-              <% if meeting.approved_at.nil? && meeting.rejected_at.nil? %>
-                <span><%= link_to 'Approve', approved_meeting_path(meeting), method: :patch, class: 'btn btn-success btn-xs' %> <%= link_to 'Reject', rejected_meeting_path(meeting), method: :patch, class: 'btn btn-danger btn-xs' %> </span>
-              <% else %>
+            <% if meeting.approved_at.nil? && meeting.rejected_at.nil? %>
+              <div class="status">
+                  <%= simple_form_for :rejected, url: rejected_meeting_path(meeting), method: :patch, class: 'inline' do |f| %>
+                    <%= f.submit 'Reject', class: 'btn btn-danger btn-xs' %>
+                  <% end %>
+                  <%= simple_form_for :approved, url: approved_meeting_path(meeting), method: :patch, class: 'inline' do |f| %>
+                    <%= f.submit 'Approve', class: 'btn btn-success btn-xs' %>
+                  <% end %>
+              </div>
+            <% else %>
+              <div class="status">
                 <%= raw(status(meeting.approved_at, meeting.rejected_at)) %>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           <span class="meeting-title"><%= meeting.skill.name %></span>
         </div>
       </div>
