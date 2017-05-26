@@ -45,14 +45,16 @@
     </div>
   </div>
 </div>
+
 <div class="reviews">
  <div class="container">
     <div class="row">
       <div class="text-center">
         <h3> What people said about <%= @teacher.first_name %> </h3>
 
-        <% reviews = @teacher.reviews_received.sort_by { |review| review.created_at }.reverse %>
-        <% reviews.each do |review| %>
+        <h3>  <%= @teacher.first_name %> Reviews</h3>
+
+        <% @reviews.each do |review| %>
           <div>
             <p><%= "⭐" * review.rating %></p>
             <p><%= review.content %></p>
@@ -62,7 +64,9 @@
 
         <div>
           <h3> Add your comment about <%= @teacher.first_name %> </h3>
-          <%= render "shared/review_form" %>
+          <% if @is_authorized == true %>
+            <%= render "shared/review_form" %>
+          <% end %>
         </div>
       </div>
     </div>

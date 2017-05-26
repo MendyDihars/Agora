@@ -19,6 +19,13 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = User.find(params[:id])
+    @reviews = @teacher.reviews_received.sort_by { |review| review.created_at }.reverse
+    meeting = Meeting.find_by_teacher_id(@teacher)
+    if meeting.present? && meeting.student == current_user && meeting.approved_at.present? && meeting.happen_at < Date.today
+      @is_authorized = true
+    else
+      @is_authorized = false
+    end
   end
 
   private

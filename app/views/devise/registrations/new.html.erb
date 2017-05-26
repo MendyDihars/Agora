@@ -1,18 +1,36 @@
-<h2>Sign up</h2>
+<div class="wrapper-form padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :photo, as: :attachinary %>
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true %>
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+            <%= f.input :password_confirmation, required: true %>
+            <%= f.input :address, required: true, autofocus: true %>
+            <%= f.input :last_name, autofocus: true %>
+            <%= f.input :first_name, autofocus: true %>
+            <%= f.input :age, autofocus: true %>
+            <%= f.input :bio, autofocus: true %>
+            <div>
+              <%= f.input :user_skills, collection: Skill.all, class: "select2-container select2-container-multi select2", default: 1 %>
+            </div>
+
+            <%= f.input :photo, as: :attachinary %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
