@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update
     super
-    if user_params[:user_skills] != ""
+    if user_params[:user_skills] == Skill.find(user_params[:user_skills])
         user_skills = UserSkill.find(current_user.user_skills.ids.first)
         user_skills.skill_id = user_params[:user_skills]
         user_skills.save
