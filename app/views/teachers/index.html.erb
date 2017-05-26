@@ -1,23 +1,41 @@
+
+<div class="index-search-form padded text-center">
+  <%= render 'shared/search_form'  %>
+  <% if @skill == "" && @address == "" %>
+    <h2>Learn by sharing ! </h2>
+  <% else %>
+    <h2> <%= @skill.capitalize %>  <%= @address.capitalize %> </h2>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row">
       <h2><% @teachers.each do |user| %></h2>
-        <div class="col-xs-6 col-sm-4">
+        <div class="col-xs-6 col-sm-6 col-md-4">
           <%= link_to teacher_path(user) do %>
-            <div class="teacher">
-              <div class="profile-teacher">
-                <%= cl_image_tag user.photo.path, class: "avatar-big" %>
-              </div>
-              <div class="name">
-                <%= user.first_name %>
-              </div>
-              <div class="address">
-                <%= user.address %>
-              </div>
-              <% user.own_skills.each do |skill| %>
-                <div class="skill">
-                  <%= emoji(skill.name) %>
+            <div class="teacher text-center">
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="profile-teacher">
+                    <%= cl_image_tag user.photo.path, class: "avatar-large" %>
+                  </div>
                 </div>
-              <% end %>
+                <div class="col-sm-9">
+                  <div class="teacher-info">
+                    <div class="name">
+                      <%= user.first_name %>
+                    </div>
+                    <% user.own_skills.each do |skill| %>
+                      <div class="skill skill_back">
+                        <%= emoji(skill.name) %>
+                      </div>
+                    <% end %>
+                    <div class="address">
+                      <%= user.address %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>
