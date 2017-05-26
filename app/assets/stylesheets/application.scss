@@ -26,10 +26,3 @@ body, html {
   height: 100%;
 }
 
-#wrapper {
-  min-height: 100%;
-  /* Negative indent footer by its height */
-  margin: 0 auto -70px;
-  /* Pad bottom by footer height */
-  padding: 0 0 70px;
-}

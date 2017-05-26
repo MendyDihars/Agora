@@ -1,8 +1,11 @@
 class TeachersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+     layout "home", only: [:index]
 
   def index
     @teachers = User.all
+    @skill = search_params[:user_skill]
+    @address = search_params[:address]
 
     if search_params[:user_skill].present?
       @teachers = User.joins(:user_skills).where(user_skills:
