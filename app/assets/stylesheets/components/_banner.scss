@@ -2,13 +2,9 @@
   color: white;
   text-align: center;
   height: 100vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background: #141E30;  /* fallback for old browsers */
-  // background: -webkit-linear-gradient(to top, #E5E5BE, #EEA008);
-  // background: linear-gradient(to top, #E5E5BE, #EEA008);
+  background: #141E30;
   background:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("https://images.pexels.com/photos/29066/pexels-photo-29066.jpg?w=940&h=650&auto=compress&cs=tinysrgb");
   background-size: cover;
-
   display: flex;
   align-items: center;
   justify-content: center;
