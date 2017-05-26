@@ -1,3 +1,15 @@
+.index-search-form {
+  padding: 20px 0;
+  background:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("https://images.pexels.com/photos/29066/pexels-photo-29066.jpg?w=940&h=650&auto=compress&cs=tinysrgb");
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  h2 {
+    font-weight: bold;
+    font-family: 'Poppins';
+  }
+}
+
 .teacher {
   margin: 20px 0;
   padding: 5px;
@@ -18,8 +30,8 @@
     padding-bottom: 5px;
   }
   .name {
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
   }
   .address {
     font-weight: lighter;

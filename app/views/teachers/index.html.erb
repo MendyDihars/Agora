@@ -1,3 +1,13 @@
+
+<div class="index-search-form padded text-center">
+  <%= render 'shared/search_form'  %>
+  <% if @skill == "" && @address == "" %>
+    <h2>Learn by sharing ! </h2>
+  <% else %>
+    <h2> <%= @skill.capitalize %>  <%= @address.capitalize %> </h2>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row">
       <h2><% @teachers.each do |user| %></h2>
@@ -16,7 +26,7 @@
                       <%= user.first_name %>
                     </div>
                     <% user.own_skills.each do |skill| %>
-                      <div class="skill">
+                      <div class="skill skill_back">
                         <%= emoji(skill.name) %>
                       </div>
                     <% end %>
