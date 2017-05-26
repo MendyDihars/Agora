@@ -5,7 +5,7 @@
     <% @meetings_studend.each do |meeting|  %>
       <div class="col-sm-6">
         <div class="meeting-info marged">
-          <div class="meeting-name"><%= link_to "#{meeting.teacher.first_name} #{meeting.teacher}".last_name, teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.teacher.email %>)</span></div>
+          <div class="meeting-name"><%= link_to "#{meeting.teacher.first_name} #{meeting.teacher.last_name}", teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.teacher.email %>)</span></div>
           <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
           <div class="meeting-date">
             <span class="label-date">Proposed date</span><br>
