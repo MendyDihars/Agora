@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525160930) do
+ActiveRecord::Schema.define(version: 20170526103420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 20170525160930) do
     t.text     "message"
     t.date     "approved_at"
     t.date     "rejected_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "skill_id"
+    t.text     "approved_message"
     t.index ["skill_id"], name: "index_meetings_on_skill_id", using: :btree
     t.index ["student_id"], name: "index_meetings_on_student_id", using: :btree
     t.index ["teacher_id"], name: "index_meetings_on_teacher_id", using: :btree

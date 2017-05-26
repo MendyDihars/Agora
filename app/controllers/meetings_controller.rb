@@ -18,25 +18,30 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def approved
+  def change_status
     meeting = Meeting.find(params[:id])
-    meeting.approved_at = Date.today
-    meeting.save
-    flash[:notice] = "Meeting approved !"
-    redirect_to meetings_path
-  end
-
-  def rejected
-    meeting = Meeting.find(params[:id])
-    meeting.rejected_at = Date.today
-    meeting.save
-    flash[:alert] = "Meeting rejected !"
-    redirect_to meetings_path
+    if params[:commit] == "Confirm"
+      meeting.approved_at = Date.today
+      meeting.approved_message = approved_message_params
+      meeting.save
+      flash[:notice] = "Meeting approved !"
+      redirect_to meetings_path
+    elsif params[:commit] == "Reject"
+      meeting.rejected_at = Date.today
+      meeting.approved_message = approved_message_params
+      meeting.save
+      flash[:alert] = "Meeting rejected !"
+      redirect_to meetings_path
+    end
   end
 
   private
 
   def meeting_params
     params.require(:meeting).permit(:skill_id, :happen_at, :message)
+  end
+
+  def approved_message_params
+    params[:change_status][:approved_message]
   end
 end

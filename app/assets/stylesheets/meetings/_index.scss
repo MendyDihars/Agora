@@ -4,16 +4,16 @@
 .meeting-info {
   border-bottom: 5px solid #75ab00;
   border-radius: 0 0 5px 5px;
-  padding: 5px 15px;
+  padding: 0 15px;
   position: relative;
-  height: 125px;
+  height: 170px;
 }
 .meeting-progress {
   border-bottom: 5px solid #b2b800;
   border-radius: 0 0 5px 5px;
-  padding: 5px 15px;
+  padding: 0 15px;
   position: relative;
-  height: 125px;
+  height: 170px;
 }
 .meeting-title {
   font-size: 18px;
@@ -23,18 +23,39 @@
   background: white;
   padding: 3px;
 }
-.meeting-message {
-  position: absolute;
-  left: 20px;
-  bottom: 15px;
-  font-style: italic;
-  font-size: 13px;
+.wrap-message {
+  display: flex;
+  justify-content: space-between;
+  .meeting-message {
+    border-right: 2px solid grey;
+    font-family: "Raleway";
+    font-size: 14px;
+    padding: 0 15px;
+    width: 50%;
+  }
+  .meeting-approved-message {
+    font-family: "Raleway";
+    font-size: 14px;
+    padding: 0 15px;
+    width: 50%;
+  }
+}
+.message-title {
+  font-size: 12px;
+  font-weight: bold;
 }
 .meeting-name {
   position: absolute;
   top: 0px;
   left: 10px;
   font-weight: bold;
+  a {
+    color: #EEA008;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #EEA008;
+  }
 }
 .meeting-created-date {
   position: absolute;
@@ -44,16 +65,29 @@
 }
 .meeting-date {
   position: absolute;
-  left: 20px;
-  bottom: 55px;
+  left: 10px;
+  top: 20px;
   padding: 5px;
-  border-radius: 5px;
-  box-shadow: 0 0 1px grey;
+  font-size: 14px;
+  span {
+    font-size: 12px;
+    font-style: italic;
+  }
 }
 .status {
   position: absolute;
   bottom: 5px;
   right: 10px;
+}
+.approved-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+.rejected-btn {
+  position: absolute;
+  bottom: 0px;
+  right: 77px;
 }
 .status-approved {
   color: $brand-success;
@@ -66,4 +100,9 @@
 .status-pending {
   color: $brand-info;
   font-size: 16px;
+}
+.italized-email {
+  font-style: italic;
+  font-size: 12px;
+  font-weight: none;
 }
