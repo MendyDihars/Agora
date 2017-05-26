@@ -3,11 +3,21 @@
   border-radius: 50%;
 }
 .avatar-large {
-  width: 250px;
-  border-radius: 10px;
-  border: 2px $brand-warning solid;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px #75ab00 solid;
   padding: 5px;
 }
+
+.avatar-x-large {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px #75ab00 solid;
+  padding: 5px;
+}
+
 .avatar-bordered {
   width: 30px;
   border-radius: 50%;
@@ -24,4 +34,12 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
+}
+
+.avatar-large_gilles {
+  width: 250px;
+  border-radius: 10px;
+  border: 2px solid;
+  border-color: #ed8f03;
+  padding: 5px;
 }

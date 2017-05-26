@@ -2,7 +2,7 @@
  <div class="row">
   <div class="col-sm-4">
     <div class="teacher-info text-center">
-      <%= cl_image_tag @teacher.photo.path, class: "avatar-large" %>
+      <%= cl_image_tag @teacher.photo.path, class: "avatar-x-large" %>
       <h1> <%= @teacher.first_name %> </h1>
       <div class="skills">
         <h4> Skills </h4>
@@ -16,15 +16,17 @@
     <div class="bio">
       <h3>Bio</h3>
       <p><%= @teacher.bio %></p>
+    </div>
+    <div class="contact-teacher-btn">
+      <span type="button" class="contact-button" data-toggle="modal" data-target="#teacherContact">
+        CONTACT
+      </span>
+    </div>
+    <div class="wanted_skills">
       <h4> I would like to learn... </h4>
       <% @teacher.wanted_skills.each do |skill| %>
         <p><span class="skill_back"><%= skill.name.downcase %></span></p>
       <% end %>
-    </div>
-    <div class="contact-teacher-btn ">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#teacherContact">
-        Contact
-      </button>
     </div>
   </div>
 </div>
@@ -51,20 +53,16 @@
     <div class="row">
       <div class="text-center">
         <h3> What people said about <%= @teacher.first_name %> </h3>
-
-        <h3>  <%= @teacher.first_name %> Reviews</h3>
-
         <% @reviews.each do |review| %>
           <div>
             <p><%= "⭐" * review.rating %></p>
             <p><%= review.content %></p>
-            <p><strong><%= link_to review.student.first_name, teacher_path(review.student) %></strong> on <%= review.created_at.strftime("%b, %d %Y ") %></p>
+            <p id="name-link"><strong><%= link_to review.student.first_name, teacher_path(review.student) %></strong> on <%= review.created_at.strftime("%b, %d %Y ") %></p>
           </div>
         <% end %>
-
         <div>
-          <h3> Add your comment about <%= @teacher.first_name %> </h3>
           <% if @is_authorized == true %>
+          <h3> Add your comment about <%= @teacher.first_name %> </h3>
             <%= render "shared/review_form" %>
           <% end %>
         </div>
