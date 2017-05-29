@@ -8,7 +8,9 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to teacher_path(@teacher)
     else
-      render "teachers/show"
+      @meeting = Meeting.where(teacher: @teacher, student: current_user).order(happen_at: :desc).first
+      @reviews = Review.where(teacher_id: params[:teacher_id])
+      render 'teachers/show'
     end
   end
 

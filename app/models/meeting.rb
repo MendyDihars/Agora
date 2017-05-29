@@ -6,4 +6,16 @@ class Meeting < ApplicationRecord
 
   validates :happen_at, presence: true
   validates :skill, presence: true
+
+  def teacher? user
+    user == teacher
+  end
+
+  def student? user
+    user == student
+  end
+
+  def happened?
+    happen_at < Time.current
+  end
 end
