@@ -2,26 +2,28 @@
 
 <div class="container">
   <div class="row">
-    <% @meetings_studend.each do |meeting|  %>
+    <% @meetings_student.each do |meeting|  %>
       <div class="col-sm-6">
-        <div class="meeting-info marged">
-          <div class="meeting-name"><%= link_to "#{meeting.teacher.first_name} #{meeting.teacher.last_name}", teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.teacher.email %>)</span></div>
-          <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
-          <div class="meeting-date">
-            <span class="label-date">Proposed date</span><br>
-            <%= meeting.happen_at.strftime('%A %d %b') %>
+        <div class="contacted-bg">
+          <div class="meeting-info">
+            <div class="meeting-name"><%= link_to "#{meeting.teacher.first_name} #{meeting.teacher.last_name}", teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.teacher.email %>)</span></div>
+            <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
+            <div class="meeting-date">
+              <span class="label-date">Proposed date</span><br>
+              <%= meeting.happen_at.strftime('%A %d %b') %>
+            </div>
+            <div class="status"><%= raw(status(meeting.approved_at, meeting.rejected_at)) %></div>
+            <span class="meeting-title"><%= meeting.skill.name %></span>
           </div>
-          <div class="status"><%= raw(status(meeting.approved_at, meeting.rejected_at)) %></div>
-          <span class="meeting-title"><%= meeting.skill.name %></span>
-        </div>
-        <div class="wrap-message">
-          <div class="meeting-message">
-            <span class="message-title">Your message</span><br>
-            <%= meeting.message %>
-          </div>
-          <div class="meeting-approved-message">
-            <span class="message-title">Received message</span><br>
-            <%= meeting.approved_message %>
+          <div class="wrap-message marged">
+            <div class="meeting-message">
+              <span class="message-title">Your message to <%= meeting.teacher.first_name %></span><br>
+              <%= meeting.message %>
+            </div>
+            <div class="meeting-approved-message">
+              <span class="message-title"><%= meeting.teacher.first_name %>'s answer</span><br>
+              <%= meeting.approved_message %>
+            </div>
           </div>
         </div>
       </div>
@@ -37,41 +39,43 @@
   <div class="row">
     <% @meetings_teacher.each do |meeting|  %>
       <div class="col-sm-6">
-        <div class="meeting-progress marged">
-          <div class="meeting-name"><%= link_to "#{meeting.student.first_name} #{meeting.student.last_name}", teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.student.email %>)</span></div>
-          <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
-          <div class="meeting-date">
-            <span class="label-date">Proposed date</span><br>
-            <%= meeting.happen_at.strftime('%A %d %b') %>
+        <div class="contacted-by-bg">
+          <div class="meeting-progress">
+            <div class="meeting-name"><%= link_to "#{meeting.student.first_name} #{meeting.student.last_name}", teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.student.email %>)</span></div>
+            <div class="meeting-created-date"><%= meeting.created_at.strftime('%A %d %b') %></div>
+            <div class="meeting-date">
+              <span class="label-date">Proposed date</span><br>
+              <%= meeting.happen_at.strftime('%A %d %b') %>
+            </div>
+             <% if meeting.approved_at.nil? && meeting.rejected_at.nil? %>
+
+                <div class="approved-btn">
+                  <%= simple_form_for :change_status, url: status_meeting_path(meeting), method: :patch do |f| %>
+                    <%= f.input :approved_message, label: false, placeholder: "Message for teacher" %>
+                    <%= f.submit :status, value: 'Confirm', class: 'btn btn-success btn-xs pull-right' %>
+                    <div class="rejected-btn">
+                      <%= f.submit :status, value: 'Reject', class: 'btn btn-danger btn-xs' %>
+                    </div>
+                  <% end %>
+                </div>
+
+
+              <% else %>
+                <div class="status">
+                  <%= raw(status(meeting.approved_at, meeting.rejected_at)) %>
+                </div>
+              <% end %>
+            <span class="meeting-title"><%= meeting.skill.name %></span>
           </div>
-           <% if meeting.approved_at.nil? && meeting.rejected_at.nil? %>
-
-              <div class="approved-btn">
-                <%= simple_form_for :change_status, url: status_meeting_path(meeting), method: :patch do |f| %>
-                  <%= f.input :approved_message, label: false, placeholder: "Message for teacher" %>
-                  <%= f.submit :status, value: 'Confirm', class: 'btn btn-success btn-xs pull-right' %>
-                  <div class="rejected-btn">
-                    <%= f.submit :status, value: 'Reject', class: 'btn btn-danger btn-xs' %>
-                  </div>
-                <% end %>
-              </div>
-
-
-            <% else %>
-              <div class="status">
-                <%= raw(status(meeting.approved_at, meeting.rejected_at)) %>
-              </div>
-            <% end %>
-          <span class="meeting-title"><%= meeting.skill.name %></span>
-        </div>
-        <div class="wrap-message marged">
-          <div class="meeting-message">
-            <span class="message-title">Received message</span><br>
-            <%= meeting.message %>
-          </div>
-          <div class="meeting-approved-message">
-            <span class="message-title">Your message</span><br>
-            <%= meeting.approved_message %>
+          <div class="wrap-message marged">
+            <div class="meeting-message">
+              <span class="message-title">Message from <%= meeting.teacher.first_name %></span><br>
+              <%= meeting.message %>
+            </div>
+            <div class="meeting-approved-message">
+              <span class="message-title">Your answer</span><br>
+              <%= meeting.approved_message %>
+            </div>
           </div>
         </div>
       </div>
