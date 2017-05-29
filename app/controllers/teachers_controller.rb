@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-     layout "home", only: [:index]
+     layout "index", only: [:index]
 
   def index
     @teachers = User.all
