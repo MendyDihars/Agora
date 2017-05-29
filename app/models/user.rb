@@ -17,13 +17,20 @@ class User < ApplicationRecord
   has_many :own_skills, through: :user_skills, source: :skill
   has_many :wanted_skills, through: :requested_skills, source: :skill
 
+  has_one :mendie
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
 
 
+  def can_validate?(meeting)
+    meeting.happened? && meeting.approved? && meeting.student?(self)
+  end
+
   def can_review? meeting
     meeting != nil && meeting.student?(self) && meeting.approved_at.present? && meeting.happened?
+
   end
 
 end

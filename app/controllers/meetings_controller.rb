@@ -1,8 +1,12 @@
 class MeetingsController < ApplicationController
+  before_action  :set_meeting, only: [:show, :change_status, :validate]
 
   def index
     @meetings_student = current_user.meetings_student
     @meetings_teacher = current_user.meetings_teacher
+  end
+
+  def show
   end
 
   def create
@@ -18,24 +22,37 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def validate
+    @meeting.validate_at = Time.current
+    @meeting.student.mendie.balance -= 1
+    @meeting.student.mendie.save
+    @meeting.teacher.mendie.balance += 1
+    @meeting.teacher.mendie.save
+    @meeting.save
+    redirect_to meeting_path(@meeting)
+  end
+
   def change_status
-    meeting = Meeting.find(params[:id])
     if params[:commit] == "Confirm"
-      meeting.approved_at = Date.today
-      meeting.approved_message = approved_message_params
-      meeting.save
+      @meeting.approved_at = Date.today
+      @meeting.approved_message = approved_message_params
+      @meeting.save
       flash[:notice] = "Meeting approved !"
       redirect_to meetings_path
     elsif params[:commit] == "Reject"
-      meeting.rejected_at = Date.today
-      meeting.approved_message = approved_message_params
-      meeting.save
+      @meeting.rejected_at = Date.today
+      @meeting.approved_message = approved_message_params
+      @meeting.save
       flash[:alert] = "Meeting rejected !"
       redirect_to meetings_path
     end
   end
 
   private
+
+  def set_meeting
+    @meeting = Meeting.find(params[:id])
+  end
 
   def meeting_params
     params.require(:meeting).permit(:skill_id, :happen_at, :message)

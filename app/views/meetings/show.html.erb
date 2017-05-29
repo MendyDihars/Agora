@@ -1,0 +1,21 @@
+<div class="wrapper-meeting-card text-center">
+  <div class="meeting-card">
+    <%= cl_image_tag @meeting.teacher.photo.path, class: "avatar-large" %>
+    <h2 class="meeting-h2"><%= link_to "#{@meeting.teacher.first_name} #{@meeting.teacher.last_name}", teacher_path(@meeting.teacher) %></h2>
+  </div>
+  <div>
+    Share <span class="skill_back"><%= @meeting.skill.name %></span> with
+    <p><%= raw(status(@meeting.approved_at, @meeting.rejected_at)) %></p><br>
+    <p class="italized"><%= @meeting.happen_at.strftime('%A %d %b') %></p>
+    <% if @meeting.validate? %>
+      <span class="minimalized">Validated</span>
+    <% elsif current_user.can_validate?(@meeting) %>
+      <span class="minimalized">Did the meeting take place?</span><br>
+      <%= link_to "Confirm Meeting", validation_meeting_path(@meeting), method: :patch, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="meeting-card">
+    <%= cl_image_tag @meeting.student.photo.path, class: "avatar-large" %>
+    <h2 class="meeting-h2"><%= link_to "#{@meeting.student.first_name} #{@meeting.student.last_name}", teacher_path(@meeting.student) %></h2>
+  </div>
+</div>
