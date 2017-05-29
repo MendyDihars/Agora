@@ -5,6 +5,10 @@ class MeetingsController < ApplicationController
     @meetings_teacher = current_user.meetings_teacher
   end
 
+  def show
+    @meeting = Meeting.find(params[:id])
+  end
+
   def create
     @teacher = User.find(params[:teacher_id])
     @meeting = Meeting.new(meeting_params)

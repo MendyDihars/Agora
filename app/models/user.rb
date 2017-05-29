@@ -23,4 +23,9 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :address, presence: true
 
+
+  def can_validate?(meeting)
+    meeting.happened? && meeting.approved? && meeting.student?(self)
+  end
+
 end
