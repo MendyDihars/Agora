@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :meetings, only: [:index, :show]
 
   patch '/meeting/:id/status', to: "meetings#change_status", as: "status_meeting"
+  patch '/meeting/:id/validation', to: "meetings#validate", as: "validation_meeting"
 
   resources :students, only: [:index]
 end

@@ -18,4 +18,8 @@ class Meeting < ApplicationRecord
   def student?(user)
     user == student
   end
+
+  def validate?
+    validate_at != nil
+  end
 end
