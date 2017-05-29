@@ -14,6 +14,7 @@
   padding: 0 15px;
   position: relative;
   height: 170px;
+
 }
 .meeting-title {
   font-size: 18px;
@@ -26,6 +27,7 @@
 .wrap-message {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 20px;
   .meeting-message {
     border-right: 2px solid grey;
     font-family: "Raleway";
@@ -105,4 +107,15 @@
   font-style: italic;
   font-size: 12px;
   font-weight: none;
+}
+
+.contacted-by-bg {
+  background: linear-gradient(180deg, #BBD8B3, white);
+  padding: 15px;
+  border-radius: 5px;
+}
+.contacted-bg {
+  background: linear-gradient(180deg, #D4E09B, white);
+  padding: 15px;
+  border-radius: 5px;
 }
