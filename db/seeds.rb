@@ -147,7 +147,7 @@ users = [
     bio: "You were good kid, real good. But as long as I'm around, you'll always be second best, see",
     url: "https://avatars2.githubusercontent.com/u/466015?v=3&s=460",
     email: "sylvain@mail.com",
-    skill: 'Code'
+    skill: 'Code',
     wanted_skill: "Dance"
   }
 ]
