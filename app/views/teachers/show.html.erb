@@ -61,10 +61,12 @@
           </div>
         <% end %>
         <div>
+        <% if current_user != nil %>
           <% if current_user.can_review?(@meeting) %>
           <h3> Add your comment about <%= @teacher.first_name %> </h3>
             <%= render "shared/review_form" %>
           <% end %>
+        <% end %>
         </div>
       </div>
     </div>
