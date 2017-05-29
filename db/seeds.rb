@@ -168,6 +168,8 @@ users.each do |item|
   user.password = "123456"
   user.email = item[:email]
   user.photo_url = item[:url]
+  balance = Mendie.new(balance: 3)
+  user.mendie = balance
   print "😜 "
   user.save!
 end
