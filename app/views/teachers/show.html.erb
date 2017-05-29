@@ -61,7 +61,7 @@
           </div>
         <% end %>
         <div>
-          <% if @is_authorized == true %>
+          <% if current_user.can_review?(@meeting) %>
           <h3> Add your comment about <%= @teacher.first_name %> </h3>
             <%= render "shared/review_form" %>
           <% end %>
