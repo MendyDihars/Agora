@@ -19,6 +19,9 @@
   justify-content: space-between;
   background-color: transparent;
 }
+.navbarform {
+  justify-content: flex-end;
+}
 
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
@@ -26,7 +29,6 @@
   left: 0px;
   top: 0px;
   z-index: 1;
-  width: 100%;
 }
 
 /* Navbar logo */
