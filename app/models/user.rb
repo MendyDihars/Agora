@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :reviews_written, class_name: 'Review', foreign_key: 'student_id'
   has_many :own_skills, through: :user_skills, source: :skill
   has_many :wanted_skills, through: :requested_skills, source: :skill
+  has_many :mendies
 
   validates :first_name, presence: true
   validates :last_name, presence: true
