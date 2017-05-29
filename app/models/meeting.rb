@@ -22,4 +22,9 @@ class Meeting < ApplicationRecord
   def validate?
     validate_at != nil
   end
+
+  def teacher? user
+    user == teacher
+  end
+
 end

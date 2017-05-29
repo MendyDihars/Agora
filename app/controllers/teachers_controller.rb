@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-     layout "home", only: [:index]
+     layout "index", only: [:index]
 
   def index
     @teachers = User.all
@@ -22,13 +22,9 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = User.find(params[:id])
+    @review = Review.new
     @reviews = @teacher.reviews_received.sort_by { |review| review.created_at }.reverse
-    meeting = Meeting.find_by_teacher_id(@teacher)
-    if meeting.present? && meeting.student == current_user && meeting.approved_at.present? && meeting.happen_at < Date.today && @teacher != current_user
-      @is_authorized = true
-    else
-      @is_authorized = false
-    end
+    @meeting = Meeting.where(teacher: @teacher, student: current_user).order(happen_at: :desc).first
   end
 
   private

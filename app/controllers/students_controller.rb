@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
     @requested_skills.flatten!
     @students = @requested_skills.map { |r| User.where(id: r.user_id) }.flatten
     @students
+
   end
 
 end

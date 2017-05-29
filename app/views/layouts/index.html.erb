@@ -10,9 +10,9 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/navbarhome' %>
+    <%= render 'shared/navbar_index' %>
     <div id="wrapperhome">
-      <%= render 'shared/flasheshome' %>
+      <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>
@@ -20,4 +20,3 @@
     <%= cloudinary_js_config %>
   </body>
 </html>
-

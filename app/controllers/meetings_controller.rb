@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
   before_action  :set_meeting, only: [:show, :change_status, :validate]
 
   def index
-    @meetings_studend = current_user.meetings_student
+    @meetings_student = current_user.meetings_student
     @meetings_teacher = current_user.meetings_teacher
   end
 

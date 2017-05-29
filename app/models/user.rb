@@ -28,4 +28,9 @@ class User < ApplicationRecord
     meeting.happened? && meeting.approved? && meeting.student?(self)
   end
 
+  def can_review? meeting
+    meeting != nil && meeting.student?(self) && meeting.approved_at.present? && meeting.happened?
+
+  end
+
 end
