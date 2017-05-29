@@ -9,7 +9,7 @@ User.destroy_all
 puts "Creating skills"
 
 skills = [
-  { name: "Handyman" },
+  { name: "Climbing" },
   { name: "Mechanics" },
   { name: "Dance" },
   { name: "Webdesign" },
@@ -58,7 +58,7 @@ users = [
     url: 'http://www.myshirt.fr/838/t-shirt-anonymous.jpg',
     email: "hack@mail.com",
     skill: "Code",
-    wanted_skill: "Handyman"
+    wanted_skill: "Climbing"
   },
   {
     first_name: 'Mendy',
@@ -127,7 +127,7 @@ users = [
     bio: "I like jewels ! I've a great ring ! Do you want to see it ? Wait.. Where is it??",
     url: 'http://68.media.tumblr.com/5bb6506a2295d000b2dbba7b7d646d0b/tumblr_ng2h3tEy3q1sesi4po1_1280.jpg',
     email: "sauron@mail.com",
-    skill: "Handyman",
+    skill: "Climbing",
     wanted_skill: "Webdesign"
   },
   {
@@ -139,6 +139,16 @@ users = [
     email: 'demo@mail.com',
     skill: 'Guitar',
     wanted_skill: "Code"
+  },
+  {
+    first_name: "Sylvain",
+    last_name: 'Peigney',
+    age: 30,
+    bio: "You were good kid, real good. But as long as I'm around, you'll always be second best, see",
+    url: "https://avatars2.githubusercontent.com/u/466015?v=3&s=460",
+    email: "sylvain@mail.com",
+    skill: 'Code'
+    wanted_skill: "Dance"
   }
 ]
 

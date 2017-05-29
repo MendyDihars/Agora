@@ -116,7 +116,6 @@ ActiveRecord::Schema.define(version: 20170529091811) do
   end
 
   add_foreign_key "meetings", "skills"
-  add_foreign_key "mendies", "users"
   add_foreign_key "requested_skills", "skills"
   add_foreign_key "requested_skills", "users"
   add_foreign_key "reviews", "meetings"
