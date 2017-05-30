@@ -2,7 +2,7 @@
  <div class="row">
   <div class="col-sm-4">
     <div class="teacher-info text-center">
-      <%= cl_image_tag @teacher.photo.path, class: "avatar-x-large" %>
+      <%= cl_image_tag dynamic_avatar(@teacher), class: "avatar-x-large" %>
       <h1> <%= @teacher.first_name %> </h1>
       <div class="skills">
         <h4> Skills </h4>
