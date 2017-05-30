@@ -2,6 +2,7 @@ class ChatsController < ApplicationController
 
   def create
     @meeting = Meeting.find(params[:meeting_id])
+    @chats = @meeting.chats
     @chat = Chat.new(require_params)
     @chat.meeting = @meeting
     @chat.user = current_user

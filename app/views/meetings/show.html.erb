@@ -27,9 +27,9 @@
     <div class="row">
       <div class="col-xs-offset-3 col-xs-6">
         <% if @meeting.student?(current_user) %>
-          <%= render 'meeting_chat_student' %>
+          <%= render 'meetings/meeting_chat_student' %>
         <% elsif @meeting.teacher?(current_user) %>
-          <%= render 'meeting_chat_teacher' %>
+          <%= render 'meetings/meeting_chat_teacher' %>
         <% end %>
       </div>
     </div>

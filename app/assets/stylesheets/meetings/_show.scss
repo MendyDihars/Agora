@@ -25,6 +25,8 @@
     padding: 10px;
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
+    max-height: 450px;
+    overflow: auto;
   }
   .chat-text {
     display: flex;
