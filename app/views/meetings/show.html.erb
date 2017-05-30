@@ -35,3 +35,29 @@
     </div>
   </div>
 </div>
+
+
+<% content_for :after_js do %>
+<script>
+  var current_user_id = <%= current_user.id %>;
+  App.messages = App.cable.subscriptions.create(
+    {
+      channel: 'ChatChannel',
+      meeting_room: "meeting_<%= @meeting.id %>"
+    },
+    {
+      connected: function() {
+        console.log("[CONNECTED]");
+      },
+      received: function(data) {
+        console.log(data.content);
+        $("#messages").removeClass('hidden')
+        return $('#messages').append(this.renderMessage(data));
+      },
+      renderMessage: function(data) {
+        return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+      }
+    }
+  );
+</script>
+<% end %>
