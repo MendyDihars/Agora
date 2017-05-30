@@ -15,6 +15,7 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'rails-assets-select2-bootstrap3-css', source: 'https://rails-assets.org'
+gem 'postmark-rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -23,6 +24,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem "letter_opener", group: :development
 
 group :development, :test do
   gem 'binding_of_caller'
