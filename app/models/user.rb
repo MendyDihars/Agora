@@ -32,13 +32,4 @@ class User < ApplicationRecord
     meeting != nil && meeting.student?(self) && meeting.approved_at.present? && meeting.happened?
 
   end
-
-  def avatar_path
-    if self.photo?
-      ActionController::Base.helpers.cl_image_path self.photo.path
-    else
-      'avatar-nobody.png'
-    end
-  end
-
 end
