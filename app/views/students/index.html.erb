@@ -25,6 +25,9 @@
                       <%= user.address %>
                     </div>
                   </div>
+                  <div>
+                    <%= link_to 'Notify him', notification_student_path(user), method: :post, class: 'btn btn-primary'  %>
+                  </div>
                 </div>
               </div>
             </div>
