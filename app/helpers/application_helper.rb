@@ -21,4 +21,15 @@ module ApplicationHelper
       "<p class='status-pending'>Pending</p>"
     end
   end
+
+  def dynamic_avatar user
+    if user.photo?
+      ActionController::Base.helpers.cl_image_path user.photo.path
+    else
+      asset_path 'avatar-nobody'
+    end
+  end
+
+
+
 end
