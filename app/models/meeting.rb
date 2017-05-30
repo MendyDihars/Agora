@@ -3,6 +3,7 @@ class Meeting < ApplicationRecord
   belongs_to :student, class_name: 'User', foreign_key: 'student_id'
   belongs_to :skill
   has_many   :reviews
+  has_many   :chats
 
   validates :happen_at, presence: true
   validates :skill, presence: true
