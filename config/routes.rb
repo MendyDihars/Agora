@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
-  mount ActionCable.server => '/cable'
   devise_for :users, controllers: { registrations: "users/registrations" }
   # devise_for :users
   root to: 'pages#home'

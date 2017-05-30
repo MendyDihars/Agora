@@ -15,7 +15,6 @@
       <%= cl_image_tag @meeting.student.photo.path, class: 'avatar' %>
     </div>
   <% end %>
-
   <% @chats.each do |chat| %>
     <% if @meeting.teacher == chat.user %>
       <div class="chat-text">
@@ -35,7 +34,7 @@
   <% end %>
   </div>
   <div class="form-chat">
-    <%= simple_form_for [@meeting, @chat], remote: true do |f| %>
+    <%= simple_form_for [@meeting, @chat] do |f| %>
       <%= f.input :content, label: false %>
       <%= f.submit "Send", class: 'btn btn-info pull-right' %>
     <% end %>
