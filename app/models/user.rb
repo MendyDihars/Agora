@@ -33,4 +33,12 @@ class User < ApplicationRecord
 
   end
 
+  def avatar
+    if self.photo?
+      ActionController::Base.helpers.cl_image_path self.photo.path
+    else
+      'avatar-nobody.png'
+    end
+  end
+
 end

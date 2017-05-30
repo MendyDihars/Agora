@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     create_userskill
+    create_mendie
   end
 
   def update
@@ -26,6 +27,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user != nil
       userskill.user_id = current_user.id
       userskill.save
+    end
+  end
+
+  def create_mendie
+    mendie = Mendie.new(balance: 3)
+    if current_user != nil
+      mendie.user_id = current_user.id
+      mendie.save
     end
   end
 
