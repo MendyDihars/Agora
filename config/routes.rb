@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :meetings, only: [:create]
     resources :reviews, only: [:create]
   end
-  resources :meetings, only: [:index, :show]
+  resources :meetings, only: [:index, :show] do
+    resources :chats, only: [:create]
+  end
 
   patch '/meeting/:id/status', to: "meetings#change_status", as: "status_meeting"
   patch '/meeting/:id/validation', to: "meetings#validate", as: "validation_meeting"

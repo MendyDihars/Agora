@@ -2,6 +2,7 @@
   <div class="meeting-card">
     <%= cl_image_tag @meeting.teacher.photo.path, class: "avatar-large" %>
     <h2 class="meeting-h2"><%= link_to "#{@meeting.teacher.first_name} #{@meeting.teacher.last_name}", teacher_path(@meeting.teacher) %></h2>
+    <p><%= @meeting.teacher.mendie.balance %> Mendies</p>
   </div>
   <div>
     Share <span class="skill_back"><%= @meeting.skill.name %></span> with
@@ -17,5 +18,20 @@
   <div class="meeting-card">
     <%= cl_image_tag @meeting.student.photo.path, class: "avatar-large" %>
     <h2 class="meeting-h2"><%= link_to "#{@meeting.student.first_name} #{@meeting.student.last_name}", teacher_path(@meeting.student) %></h2>
+    <p><%= @meeting.student.mendie.balance %> Mendies</p>
+  </div>
+</div>
+
+<div class="wrapper-chatbox">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-3 col-xs-6">
+        <% if @meeting.student?(current_user) %>
+          <%= render 'meeting_chat_student' %>
+        <% elsif @meeting.teacher?(current_user) %>
+          <%= render 'meeting_chat_teacher' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

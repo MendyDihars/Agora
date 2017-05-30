@@ -32,14 +32,12 @@ ActiveRecord::Schema.define(version: 20170530093417) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "meeting_id"
-    t.integer  "student_id"
-    t.integer  "teacher_id"
+    t.integer  "user_id"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meeting_id"], name: "index_chats_on_meeting_id", using: :btree
-    t.index ["student_id"], name: "index_chats_on_student_id", using: :btree
-    t.index ["teacher_id"], name: "index_chats_on_teacher_id", using: :btree
+    t.index ["user_id"], name: "index_chats_on_user_id", using: :btree
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -129,6 +127,7 @@ ActiveRecord::Schema.define(version: 20170530093417) do
   end
 
   add_foreign_key "chats", "meetings"
+  add_foreign_key "chats", "users"
   add_foreign_key "meetings", "skills"
   add_foreign_key "requested_skills", "skills"
   add_foreign_key "requested_skills", "users"
