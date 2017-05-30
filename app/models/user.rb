@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
   end
 
-  def avatar
+  def avatar_path
     if self.photo?
       ActionController::Base.helpers.cl_image_path self.photo.path
     else
