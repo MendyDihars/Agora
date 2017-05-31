@@ -112,17 +112,30 @@
 }
 
 .contacted-by-bg {
-  background: linear-gradient(180deg, #BBD8B3, white);
   padding: 15px;
   border-radius: 5px;
+  -webkit-box-shadow: 4px 6px 14px 0px rgba(158,158,158,1);
+  -moz-box-shadow: 4px 6px 14px 0px rgba(158,158,158,1);
+  box-shadow: 4px 6px 14px 0px rgba(158,158,158,1);
 }
 .contacted-bg {
-  background: linear-gradient(180deg, #D4E09B, white);
   padding: 15px;
   border-radius: 5px;
+  -webkit-box-shadow: 4px 6px 14px 0px rgba(158,158,158,1);
+  -moz-box-shadow: 4px 6px 14px 0px rgba(158,158,158,1);
+  box-shadow: 4px 6px 14px 0px rgba(158,158,158,1);
 }
+
+.tab-link {
+  font-size: 18px;
+  font-family: 'Poppins';
+  color: gray;
+}
+
 .validate-link {
   position: absolute;
-  top: 18px;
-  right: 5px;
+  top: 70px;
+  left: 15px;
+  font-size: 14px;
+  font-style: italic;
 }
