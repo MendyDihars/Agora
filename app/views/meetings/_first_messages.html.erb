@@ -1,4 +1,4 @@
-<% if current_user == @meeting.student %>
+<% if current_user == @meeting.teacher %>
   <% if @meeting.approved_message? %>
     <div class="chat-text">
       <%= cl_image_tag @meeting.teacher.photo.path, class: 'avatar' %>
@@ -15,7 +15,7 @@
       <%= cl_image_tag @meeting.student.photo.path, class: 'avatar' %>
     </div>
   <% end %>
-<% elsif current_user == @meeting.teacher %>
+<% elsif current_user == @meeting.student %>
   <% if @meeting.approved_message? %>
     <div class="chat-text">
       <%= cl_image_tag @meeting.student.photo.path, class: 'avatar' %>
