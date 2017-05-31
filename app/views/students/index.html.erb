@@ -1,40 +1,27 @@
+<% content_for :meta_title, "Students looking for your skill" %>
 
 <div class="container">
   <div class="row">
-  <h4 class="text-center">These users want to learn  your skill. Lets them know you can help</h4>
+  <h4 class="text-center">These users want to learn your skill. Let them know you can help</h4>
     <% @students.each do |user| %>
       <div class="col-xs-6 col-sm-6 col-md-4">
         <div class="teacher text-center">
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="profile-teacher">
-                <%= cl_image_tag dynamic_avatar(user), class: "avatar-large" %>
+          <div class="col-sm-4">
+            <div class="profile-teacher">
+              <%= cl_image_tag dynamic_avatar(user), class: "avatar-large" %>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="teacher-info">
+              <div class="name">
+                <%= link_to user.first_name, teacher_path(user) %>
+              </div>
+              <div class="address">
+                <%= user.address %>
               </div>
             </div>
-            <div class="col-sm-9">
-              <div class="teacher-info">
-                <div class="name">
-                  <%= link_to user.first_name, teacher_path(user) %>
-                </div>
-                <div class="col-sm-9">
-                  <div class="teacher-info">
-                    <div class="name">
-                      <%= user.first_name %>
-                    </div>
-                    <% user.wanted_skills.each do |skill| %>
-                      <div class="skill">
-                        <span class="skill_back"><%= skill.name %></span>
-                      </div>
-                    <% end %>
-                    <div class="address">
-                      <%= user.address %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <%= link_to 'Notify !', notification_student_path(user), method: :post, class: 'btn btn-primary btn-sm'  %>
-              </div>
+            <div>
+              <%= link_to 'Notify !', notification_student_path(user), method: :post, class: 'btn btn-primary btn-sm'  %>
             </div>
           </div>
         </div>
