@@ -34,7 +34,6 @@ class User < ApplicationRecord
   end
 
   def can_review? meeting
-    meeting != nil && meeting.student?(self) && meeting.approved_at.present? && meeting.happened?
-
+    meeting != nil && meeting.student?(self) && meeting.approved? && meeting.happened?
   end
 end

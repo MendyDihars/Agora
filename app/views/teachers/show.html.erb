@@ -65,15 +65,13 @@
               <p id="name-link"><strong><%= link_to review.student.first_name, teacher_path(review.student) %></strong> on <%= review.created_at.strftime("%b, %d %Y ") %></p>
             </div>
           <% end %>
+        <% end %>
           <div>
-          <% if current_user != nil %>
             <% if current_user.can_review?(@meeting) %>
             <h3> Add your comment about <%= @teacher.first_name %> </h3>
               <%= render "shared/review_form" %>
             <% end %>
-          <% end %>
           </div>
-        <% end %>
       </div>
     </div>
   </div>
