@@ -43,7 +43,10 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+      <div>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to t(".sign_up", default: "SignUp"), new_user_registration_path, class: "btn btn-primary" %>
+      </div>
 
     <% end %>
 
