@@ -1,0 +1,4 @@
+<p><%= @greeting %>, <%= @student.first_name %></p>
+<h4><%=  @teacher.first_name %> can teach you <%= @teacher.own_skills.first.name  %> !</h4>
+<p>Contact in <%= link_to 'his/her profile', teacher_url(@teacher) %></p>
+<p>We hope to see you soon.</p>

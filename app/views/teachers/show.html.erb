@@ -2,7 +2,7 @@
  <div class="row">
   <div class="col-sm-4">
     <div class="teacher-info text-center">
-      <%= cl_image_tag @teacher.photo.path, class: "avatar-x-large" %>
+      <%= cl_image_tag dynamic_avatar(@teacher), class: "avatar-x-large" %>
       <h1> <%= @teacher.first_name %> </h1>
       <div class="skills">
         <h4> Skills </h4>
@@ -52,22 +52,26 @@
  <div class="container">
     <div class="row">
       <div class="text-center">
-        <h3> What people said about <%= @teacher.first_name %> </h3>
-        <% @reviews.each do |review| %>
+        <%  if @reviews.empty? %>
+          <h3> Nobody commented on <%= @teacher.first_name %> yet </h3>
+        <% else  %>
+          <h3> What people said about <%= @teacher.first_name %> </h3>
+          <% @reviews.each do |review| %>
+            <div>
+              <p><%= "⭐" * review.rating %></p>
+              <p><%= review.content %></p>
+              <p id="name-link"><strong><%= link_to review.student.first_name, teacher_path(review.student) %></strong> on <%= review.created_at.strftime("%b, %d %Y ") %></p>
+            </div>
+          <% end %>
           <div>
-            <p><%= "⭐" * review.rating %></p>
-            <p><%= review.content %></p>
-            <p id="name-link"><strong><%= link_to review.student.first_name, teacher_path(review.student) %></strong> on <%= review.created_at.strftime("%b, %d %Y ") %></p>
+          <% if current_user != nil %>
+            <% if current_user.can_review?(@meeting) %>
+            <h3> Add your comment about <%= @teacher.first_name %> </h3>
+              <%= render "shared/review_form" %>
+            <% end %>
+          <% end %>
           </div>
         <% end %>
-        <div>
-        <% if current_user != nil %>
-          <% if current_user.can_review?(@meeting) %>
-          <h3> Add your comment about <%= @teacher.first_name %> </h3>
-            <%= render "shared/review_form" %>
-          <% end %>
-        <% end %>
-        </div>
       </div>
     </div>
   </div>

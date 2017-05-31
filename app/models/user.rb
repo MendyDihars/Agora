@@ -37,5 +37,4 @@ class User < ApplicationRecord
     meeting != nil && meeting.student?(self) && meeting.approved_at.present? && meeting.happened?
 
   end
-
 end
