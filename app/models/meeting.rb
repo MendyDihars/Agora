@@ -3,6 +3,7 @@ class Meeting < ApplicationRecord
   belongs_to :student, class_name: 'User', foreign_key: 'student_id'
   belongs_to :skill
   has_many   :reviews
+  has_many   :chats
 
   validates :happen_at, presence: true
   validates :skill, presence: true
@@ -23,8 +24,15 @@ class Meeting < ApplicationRecord
     validate_at != nil
   end
 
-  def teacher? user
+  def teacher?(user)
     user == teacher
   end
 
+  def approved_message?
+    approved_message != nil
+  end
+
+  def message?
+    message != nil
+  end
 end

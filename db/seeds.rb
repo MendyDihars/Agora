@@ -149,6 +149,26 @@ users = [
     email: "sylvain@mail.com",
     skill: 'Code',
     wanted_skill: "Dance"
+  },
+  {
+    first_name: "Gilles",
+    last_name: 'Aroutzet',
+    age: 16,
+    bio: "I like insults... fucking bastard.. I'm gonna take coffee.",
+    url: "https://avatars2.githubusercontent.com/u/26441375?v=3&s=400",
+    email: "garoutzet@mail.com",
+    skill: 'Karate',
+    wanted_skill: "Painting"
+  },
+  {
+    first_name: "Tiphaine",
+    last_name: 'Dosta',
+    age: 22,
+    bio: "Hey ! I'm the better designer you've ever seen. I can teach you if you have the potential",
+    url: "https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/16265296_1305374079523193_5837690447164327154_n.jpg?oh=3316c56dc7ae8662ff52ddcbf78b0841&oe=59B78A2A",
+    email: "tiphaine@mail.com",
+    skill: 'Painting',
+    wanted_skill: "Karate"
   }
 ]
 

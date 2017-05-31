@@ -71,6 +71,7 @@
 .navbar-wagon-button:hover {
   color: white;
   text-decoration: none;
+  transform: scale(1.05);
 }
 
 /* Navbar search form */
@@ -108,6 +109,10 @@
 }
 
 /* Navbar dropdown menu */
+#navbar-wagon-menu:hover {
+  transform: scale(1.05);
+}
+
 .navbar-wagon-dropdown-menu {
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
