@@ -45,37 +45,14 @@
               </div>
             <% end %>
           <% end %>
-          <%= simple_form_for [@meeting, @chat] do |f| %>
-            <%= f.input :content, label: false %>
-            <%= f.submit "Send", class: 'btn btn-info pull-right' %>
-          <% end %>
+          <div class="form-chat">
+            <%= simple_form_for [@meeting, @chat] do |f| %>
+              <%= f.input :content, label: false %>
+              <%= f.submit "Send", class: 'btn btn-info pull-right' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<% content_for :after_js do %>
-<script>
-  var current_user_id = <%= current_user.id %>;
-  App.messages = App.cable.subscriptions.create(
-    {
-      channel: 'ChatChannel',
-      meeting_room: "meeting_<%= @meeting.id %>"
-    },
-    {
-      connected: function() {
-        console.log("[CONNECTED]");
-      },
-      received: function(data) {
-        console.log(data.content);
-        $("#messages").removeClass('hidden')
-        return $('#messages').append(this.renderMessage(data));
-      },
-      renderMessage: function(data) {
-        return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
-      }
-    }
-  );
-</script>
-<% end %>
