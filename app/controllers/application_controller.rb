@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :age, :bio, :address, :photo])
   end
 
+  def default_url_options
+  { host: ENV['HOST'] || 'localhost:3000' }
+  end
+
   private
 
   def store_current_location
