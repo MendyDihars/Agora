@@ -5,3 +5,23 @@
   /* Pad bottom by footer height */
   padding: 0 0 70px;
 }
+
+#wrapperhome {
+  min-height: 100%;
+  /* Negative indent footer by its height */
+  margin: -70px auto -80px;
+  /* Pad bottom by footer height */
+  padding: 0 0 0;
+}
+
+#wrapperindex {
+  min-height: 100%;
+  /* Negative indent footer by its height */
+  margin: -70px auto -70px;
+  /* Pad bottom by footer height */
+  padding: 0 0 120px;
+}
+
+#form-homepage {
+  margin-bottom: 130px;
+}
