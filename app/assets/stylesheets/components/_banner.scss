@@ -3,7 +3,7 @@
   text-align: center;
   height: 100vh;
   background: #141E30;
-  background:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("https://images.pexels.com/photos/29066/pexels-photo-29066.jpg?w=940&h=650&auto=compress&cs=tinysrgb");
+  background:  linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("background.jpg");
   background-size: cover;
   display: flex;
   align-items: center;
@@ -17,6 +17,6 @@
     font-size: 20px;
     font-weight: lighter;
     color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 }
