@@ -1,7 +1,11 @@
 #wrapperhome {
   min-height: 100%;
   /* Negative indent footer by its height */
-  margin: -70px auto -70px;
+  margin: -70px auto -80px;
   /* Pad bottom by footer height */
-  padding: 0 0 70px;
+  padding: 0 0 0;
+}
+
+#form-homepage {
+  margin-bottom: 130px;
 }
