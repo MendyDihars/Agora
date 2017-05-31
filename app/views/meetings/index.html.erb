@@ -13,6 +13,9 @@
               <%= meeting.happen_at.strftime('%A %d %b') %>
             </div>
             <div class="status"><%= raw(status(meeting.approved_at, meeting.rejected_at)) %></div>
+            <div class="validate-link">
+              <%= link_to dont_forget(meeting), meeting_path(meeting), class: 'minimalized' %>
+            </div>
             <span class="meeting-title"><%= meeting.skill.name %></span>
           </div>
           <div class="wrap-message marged">
@@ -63,6 +66,9 @@
               <% else %>
                 <div class="status">
                   <%= raw(status(meeting.approved_at, meeting.rejected_at)) %>
+                </div>
+                <div class="validate-link">
+                  <%= link_to dont_forget(meeting), meeting_path(meeting), class: 'minimalized' %>
                 </div>
               <% end %>
             <span class="meeting-title"><%= meeting.skill.name %></span>

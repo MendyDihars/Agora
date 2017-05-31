@@ -1,3 +1,4 @@
+
 module ApplicationHelper
 
   def status(approved, rejected)
@@ -18,6 +19,13 @@ module ApplicationHelper
     end
   end
 
+  def dont_forget(meeting)
+    unless meeting.validate? && current_user == meeting.student
+      "Don't forget to validate your meeting, here"
+    else
+      "View details"
+    end
+  end
 
 
 end
