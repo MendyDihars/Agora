@@ -10,10 +10,15 @@ class User < ApplicationRecord
   has_attachment :photo
   has_many :requested_skills
   has_many :user_skills
+
+  has_many :chats
+
   has_many :meetings_teacher, class_name: 'Meeting', foreign_key: "teacher_id"
   has_many :meetings_student, class_name: 'Meeting', foreign_key: "student_id"
+
   has_many :reviews_received, class_name: 'Review', foreign_key: 'teacher_id'
   has_many :reviews_written, class_name: 'Review', foreign_key: 'student_id'
+
   has_many :own_skills, through: :user_skills, source: :skill
   has_many :wanted_skills, through: :requested_skills, source: :skill
 

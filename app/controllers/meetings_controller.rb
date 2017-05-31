@@ -7,6 +7,8 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    @chats = @meeting.chats
+    @chat = Chat.new
   end
 
   def create
