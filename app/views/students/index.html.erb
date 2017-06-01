@@ -16,6 +16,11 @@
               <div class="name">
                 <%= link_to user.first_name, teacher_path(user) %>
               </div>
+              <% user.wanted_skills.each do |skill| %>
+                <div class="marged-sm">
+                    <span class="skill_back"><%= skill.name %></span>
+                <% end %>
+              </div>
               <div class="address">
                 <%= user.address %>
               </div>
