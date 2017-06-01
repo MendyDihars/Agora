@@ -2,5 +2,5 @@
 <%= simple_form_for @review, url: teacher_reviews_path(@teacher), method: :post do |f| %>
   <%= f.input :content %>
   <%= f.input :rating, collection: (1..5).to_a, default: 1 %>
-  <%= f.submit "add review", class: "btn contact-button" %>
+  <%= f.submit "add review", class: "btn btn-primary" %>
 <% end %>
