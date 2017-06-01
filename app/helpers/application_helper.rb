@@ -15,7 +15,7 @@ module ApplicationHelper
     if user.photo?
       ActionController::Base.helpers.cl_image_path user.photo.path
     else
-      asset_path 'avatar-nobody'
+      image_path 'avatar-nobody'
     end
   end
 
