@@ -28,26 +28,28 @@
       <div class="col-xs-offset-3 col-xs-6">
         <div class="chatbox">
           <%= render 'firsts_messages' %>
-          <% @chats.each do |chat| %>
-            <% if chat.user == current_user %>
-              <div class="chat-text2">
-                <div class="chat2">
-                  <%= chat.content %>
+          <div id="new-message">
+            <% @chats.each do |chat| %>
+              <% if chat.user == current_user %>
+                <div class="chat-text2">
+                  <div class="chat2">
+                    <%= chat.content %>
+                  </div>
+                  <%= cl_image_tag chat.user.photo.path, class: 'avatar' %>
                 </div>
-                <%= cl_image_tag chat.user.photo.path, class: 'avatar' %>
-              </div>
-            <% else %>
-              <div class="chat-text">
-                <%= cl_image_tag chat.user.photo.path, class: 'avatar' %>
-                <div class="chat1">
-                  <%= chat.content %>
+              <% else %>
+                <div class="chat-text">
+                  <%= cl_image_tag chat.user.photo.path, class: 'avatar' %>
+                  <div class="chat1">
+                    <%= chat.content %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
           <div class="form-chat">
             <%= simple_form_for [@meeting, @chat], remote: true do |f| %>
-              <%= f.input :content, label: false %>
+              <%= f.input :content, label: false, id: "btn-submit" %>
               <%= f.submit "Send", class: 'btn btn-info pull-right' %>
             <% end %>
           </div>
@@ -59,7 +61,10 @@
 
 <% content_for :after_js do %>
   <script>
-    var current_user_id = <%= current_user.id %>;
+    var photoUser = $("#currentUser").attr('src');
+    var currentUserId = <%= current_user.id %>;
+    var teacherId = <%= @meeting.teacher.id %>;
+    var studentId = <%= @meeting.student.id %>;
     App.messages = App.cable.subscriptions.create(
       {
         channel: 'ChatChannel',
@@ -70,13 +75,15 @@
           console.log("[CONNECTED]");
         },
         received: function(data) {
-          console.log(data.content);
-          // $("#messages").removeClass('hidden')
-          // return $('#messages').append(this.renderMessage(data));
+          if ( currentUserId == studentId ) {
+            $("textarea").val("");
+            return $("#new-message").append("<div class='chat-text2'><div class='chat2'>" + data.content + "</div><img class='avatar' src='" + photoUser + "'></div>");
+          }
+          else {
+            $("textarea").val("");
+            return $("#new-message").append("<div class='chat-text'><div class='chat1'>" + data.content + "</div><img class='avatar' src='" + photoUser + "'></div>");
+          }
         },
-        renderMessage: function(data) {
-          // return "";
-        }
       }
     );
   </script>
