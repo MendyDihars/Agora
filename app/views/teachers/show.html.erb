@@ -6,14 +6,88 @@
       <div class="col-xs-offset-2 col-xs-8">
 
         <div class="head-show marged">
-          <%= cl_image_tag dynamic_avatar(@teacher), class: "avatar-x-large" %>
+          <div>
+            <%= cl_image_tag dynamic_avatar(@teacher), class: "avatar-x-large" %>
+            <div class="text-center">
+              <h6 class="text-center">Balance</h6>
+              <p><%= @teacher.mendie.balance %> Mendies</p>
+            </div>
+          </div>
           <div class="info-show">
-            <h4>Age</h4>
+            <h6>Name</h6>
+            <h4><%= "#{@teacher.first_name} #{@teacher.last_name}" %></h4>
+            <h6>Age</h6>
             <p><%= @teacher.age %> ans</p>
-
+            <h6>Bio</h6>
+            <p><%= @teacher.bio %></p>
+            <div class="skills-show">
+              <div>
+                <h6>My skills</h6>
+                <span class="skill_back"><%= @teacher.own_skills.first.name.downcase %></span>
+              </div>
+              <div>
+                <h6>Can you teach me...</h6>
+                <span class="skill_back"><%= @teacher.wanted_skills.first.name.downcase %></span>
+              </div>
+            </div>
           </div>
         </div>
 
+        <div class="call-to-action text-center">
+          <span type="button" class="btn btn-primary btn-contact" data-toggle="modal" data-target="#teacherContact">
+            CONTACT
+          </span>
+        </div>
+
+        <div class="wrapper-reviews marged">
+          <% if @reviews.empty? %>
+            <h2 class="text-center">Nobody commented on <%= @teacher.first_name %> yet</h2>
+          <% else %>
+            <h2 class="text-center"><%= @teacher.first_name %>'s reviews</h2>
+            <% @reviews.each do |review| %>
+              <div class="review">
+                <div class="rev-author text-center">
+                  <p><%= link_to cl_image_tag(dynamic_avatar(review.student), class: 'avatar') %></p>
+                  <span><%= link_to review.student.first_name, teacher_path(@teacher) %></span>
+                </div>
+                <div class="rev-content">
+                  <div class="rating">
+                    <span>
+                      <%= "😊 " * review.rating %>
+                    </span>
+                  </div>
+                  <p><%= review.content %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="form-rev">
+            <% if current_user != nil %>
+              <% if current_user.can_review?(@meeting) %>
+              <h3> Add your comment about <%= @teacher.first_name %> </h3>
+                <%= render "shared/review_form" %>
+              <% end %>
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="teacherContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Send a meeting request</h4>
+      </div>
+      <div class="modal-body">
+        <div class="meeting">
+          <%= render 'shared/meeting_form' %>
+        </div>
       </div>
     </div>
   </div>
