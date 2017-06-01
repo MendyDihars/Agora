@@ -18,15 +18,15 @@
 
 .contact-button {
   color: white;
-  padding: 15px 20px;
-  border-radius: 8px;
+  padding: 10px 15px;
+  border-radius: 5px;
   font-weight: bold;
-  background: #75ab00;
+  background: $brand_primary;
   transition: background 0.3s ease;
 }
 .contact-button:hover {
   opacity: 1;
-  background: #3ac162;
+  background: rgba(117, 171, 0, 0.7);
   text-decoration: none;
   color: white;
 }
@@ -41,5 +41,20 @@
       color: #EEA008;
       text-decoration: none;
     }
+  }
+}
+
+
+.head-show {
+  background: #eee;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  .info-show {
+    font-family: 'Indie Flower', cursive;
+    text-align: justify;
+    border: 1px solid black;
+    width: 50%;
+    padding: 20px 0;
   }
 }

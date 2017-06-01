@@ -1,81 +1,20 @@
 <% content_for :meta_title, "#{@teacher.first_name}'s bio" %>
 
-<div class="container padded">
- <div class="row">
-  <div class="col-sm-4">
-    <div class="teacher-info text-center">
-      <%= cl_image_tag dynamic_avatar(@teacher), class: "avatar-x-large" %>
-      <h1> <%= @teacher.first_name %> </h1>
-      <div class="skills">
-        <h4> Skills </h4>
-        <% @teacher.own_skills.each do |skill| %>
-          <p><span class="skill_back"><%= skill.name.downcase %></span></p>
-        <% end %>
-      </div>
-   </div>
-  </div>
-  <div class="col-sm-8">
-    <div class="bio">
-      <h3>Bio</h3>
-      <p><%= @teacher.bio %></p>
-    </div>
-    <div class="contact-teacher-btn">
-      <span type="button" class="contact-button" data-toggle="modal" data-target="#teacherContact">
-        CONTACT
-      </span>
-    </div>
-    <div class="wanted_skills">
-      <h4> I would like to learn... </h4>
-      <% @teacher.wanted_skills.each do |skill| %>
-        <p><span class="skill_back"><%= skill.name.downcase %></span></p>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-  <div class="modal fade" id="teacherContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Send a meeting request</h4>
-        </div>
-        <div class="modal-body">
-          <div class="meeting">
-            <%= render 'shared/meeting_form' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="reviews">
- <div class="container">
+<div class="wrapper-show">
+  <div class="container">
     <div class="row">
-      <div class="text-center">
-        <%  if @reviews.empty? %>
-          <h3> Nobody commented on <%= @teacher.first_name %> yet </h3>
-        <% else  %>
-          <h3> What people said about <%= @teacher.first_name %> </h3>
-          <% @reviews.each do |review| %>
-            <div>
-              <p><%= "⭐" * review.rating %></p>
-              <p><%= review.content %></p>
-              <p id="name-link"><strong><%= link_to review.student.first_name, teacher_path(review.student) %></strong> on <%= review.created_at.strftime("%b, %d %Y ") %></p>
-            </div>
-          <% end %>
-        <% end %>
-          <div>
-            <% if current_user != nil %>
-              <% if current_user.can_review?(@meeting) %>
-              <h3> Add your comment about <%= @teacher.first_name %> </h3>
-                <%= render "shared/review_form" %>
-              <% end %>
-            <% end %>
+      <div class="col-xs-offset-2 col-xs-8">
+
+        <div class="head-show marged">
+          <%= cl_image_tag dynamic_avatar(@teacher), class: "avatar-x-large" %>
+          <div class="info-show">
+            <h4>Age</h4>
+            <p><%= @teacher.age %> ans</p>
+
           </div>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
-
