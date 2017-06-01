@@ -15,7 +15,7 @@ module ApplicationHelper
     if user.photo?
       ActionController::Base.helpers.cl_image_path user.photo.path
     else
-      image_path 'avatar-nobody'
+      'http://res.cloudinary.com/mendyd/image/upload/v1496330256/avatar-nobody_cptbv8.png'
     end
   end
 
