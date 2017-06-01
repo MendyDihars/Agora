@@ -16,7 +16,7 @@
       <%= link_to "Meetings", meetings_path, class: "navbar-wagon-button" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag dynamic_avatar(current_user), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to teacher_path(current_user) do %>
@@ -41,7 +41,10 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+      <div>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to t(".sign_up", default: "SignUp"), new_user_registration_path, class: "btn btn-primary" %>
+      </div>
 
     <% end %>
 

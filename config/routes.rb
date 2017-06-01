@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
-  mount ActionCable.server => '/cable'
   devise_for :users, controllers: { registrations: "users/registrations" }
   # devise_for :users
   root to: 'pages#home'
@@ -10,10 +9,12 @@ Rails.application.routes.draw do
     resources :meetings, only: [:create]
     resources :reviews, only: [:create]
   end
+
   resources :meetings, only: [:index, :show] do
     resources :chats, only: [:create]
   end
 
+  post '/students/:id/notification', to: 'students#notification', as: 'notification_student'
   patch '/meeting/:id/status', to: "meetings#change_status", as: "status_meeting"
   patch '/meeting/:id/validation', to: "meetings#validate", as: "validation_meeting"
 

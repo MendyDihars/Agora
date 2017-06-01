@@ -30,12 +30,10 @@ class User < ApplicationRecord
 
 
   def can_validate?(meeting)
-    meeting.happened? && meeting.approved? && meeting.student?(self)
+    meeting.happened? && meeting.approved? && meeting.student?(self) && meeting.validate_at == nil
   end
 
   def can_review? meeting
-    meeting != nil && meeting.student?(self) && meeting.approved_at.present? && meeting.happened?
-
+    meeting != nil && meeting.student?(self) && meeting.approved? && meeting.happened?
   end
-
 end

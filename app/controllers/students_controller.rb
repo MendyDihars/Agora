@@ -8,7 +8,14 @@ class StudentsController < ApplicationController
     @requested_skills.flatten!
     @students = @requested_skills.map { |r| User.where(id: r.user_id) }.flatten
     @students
+  end
 
+  def notification
+    @student = User.find(params[:id])
+    @teacher = current_user
+    StudentMailer.notification(@student, @teacher).deliver_now
+    redirect_to students_path
+    flash[:notice] = 'Student notified'
   end
 
 end

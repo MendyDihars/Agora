@@ -1,5 +1,8 @@
 puts "Destroy all :o "
 
+Review.destroy_all
+Chat.destroy_all
+Mendie.destroy_all
 Meeting.destroy_all
 UserSkill.destroy_all
 RequestedSkill.destroy_all
@@ -64,7 +67,7 @@ users = [
     first_name: 'Mendy',
     last_name: 'Dihars',
     age: 22,
-    bio: "I can do some things, I hope I'll can verify you",
+    bio: "Web Developpeur FullStack Junior Ruby on Rails. I can teach you my knowledge's code.. lucky boy/girl.",
     url: 'https://avatars3.githubusercontent.com/u/26514822?v=3&s=460',
     email: "mendy@mail.com",
     skill: "Code",
@@ -75,7 +78,7 @@ users = [
     last_name: 'Pendragon',
     age: 30,
     bio: "I practice Karate and sometimes, I'm the King",
-    url: 'https://kaamelott.hypnoseries.tv/photo/119/galerie/Personnages_Principaux/arthur/1arthur-television-magazine-237817-holly95_1_.jpg',
+    url: 'http://www.info-mag-annonce.com/journal/upload/2015/08/CULT_ALEXANDRE_ASTIER.jpg',
     email: "sanglier-de-cournouailles@mail.com",
     skill: "Karate",
     wanted_skill: "Code"
@@ -85,7 +88,7 @@ users = [
     last_name: 'Croft',
     age: 28,
     bio: "I love archeology and kill each thing I see.",
-    url: 'https://img.generation-nt.com/lara-croft_01B0000001625626.jpg',
+    url: 'http://img04.deviantart.net/d5cb/i/2013/060/f/0/lara_croft_portrait__3d__by_sterrennacht-d5wj4yo.png',
     email: "tomb-raider@mail.com",
     skill: "Karate",
     wanted_skill: "Webdesign"
@@ -125,7 +128,7 @@ users = [
     last_name: 'Mordor',
     age: 600,
     bio: "I like jewels ! I've a great ring ! Do you want to see it ? Wait.. Where is it??",
-    url: 'http://68.media.tumblr.com/5bb6506a2295d000b2dbba7b7d646d0b/tumblr_ng2h3tEy3q1sesi4po1_1280.jpg',
+    url: 'https://pbs.twimg.com/profile_images/658256779189616640/NPCn-Muj.jpg',
     email: "sauron@mail.com",
     skill: "Climbing",
     wanted_skill: "Webdesign"
@@ -135,7 +138,7 @@ users = [
     last_name: 'Demo-last_name',
     age: 35,
     bio: "I'm a demo !",
-    url: "http://forex-ecole.com/wp-content/uploads/2015/07/requst-a-demo.jpg",
+    url: "http://www.ninjatown.com/wp-content/uploads/2011/06/WeeNinja-patch.jpg",
     email: 'demo@mail.com',
     skill: 'Guitar',
     wanted_skill: "Code"
@@ -149,6 +152,46 @@ users = [
     email: "sylvain@mail.com",
     skill: 'Code',
     wanted_skill: "Dance"
+  },
+  {
+    first_name: "Gilles",
+    last_name: 'Aroutzet',
+    age: 16,
+    bio: "I'm a good guy, I love animals... every creatures matters. My goal? Learn a lot of stuff",
+    url: "https://avatars2.githubusercontent.com/u/26441375?v=3&s=400",
+    email: "garoutzet@mail.com",
+    skill: 'Karate',
+    wanted_skill: "Painting"
+  },
+  {
+    first_name: "Tiphaine",
+    last_name: 'Dosta',
+    age: 22,
+    bio: "Hey ! I'm the better designer you've ever seen. I can teach you if you have the potential",
+    url: "https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/16265296_1305374079523193_5837690447164327154_n.jpg?oh=3316c56dc7ae8662ff52ddcbf78b0841&oe=59B78A2A",
+    email: "tiphaine@mail.com",
+    skill: 'Painting',
+    wanted_skill: "Karate"
+  },
+  {
+    first_name: "Edward",
+    last_name: 'Chien',
+    age: 8,
+    bio: "Wouf ! Wouhouuuu Wouf ! ... sorry ... Bark !",
+    url: "http://www.ushot.pl/wp-content/uploads/2014/03/William-Wegman-dog-ushot-2.jpg",
+    email: "chien@mail.com",
+    skill: 'Painting',
+    wanted_skill: "Guitar"
+  },
+  {
+    first_name: "Albert",
+    last_name: 'Einstein',
+    age: 78,
+    bio: "E = Mc.. Solar. Yeah I'm scientist but I'm a man after all.. And mens like humor.",
+    url: "https://i2.wp.com/memolition.com/wp-content/uploads/2014/01/albert-einstein-04.jpg?fit=600\%2C600",
+    email: "bebert@mail.com",
+    skill: 'Mechanics',
+    wanted_skill: "Climbing"
   }
 ]
 
