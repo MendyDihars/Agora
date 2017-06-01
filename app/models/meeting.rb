@@ -29,10 +29,10 @@ class Meeting < ApplicationRecord
   end
 
   def approved_message?
-    approved_message != nil
+    approved_message != nil && approved_message != ""
   end
 
   def message?
-    message != nil
+    message != nil && message != ""
   end
 end

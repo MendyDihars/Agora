@@ -1,0 +1,31 @@
+<% if @meeting.message? && @meeting.student?(current_user) %>
+  <div class="chat-text2">
+    <div class="chat2">
+      <%= @meeting.message %>
+    </div>
+    <%= cl_image_tag dynamic_avatar(current_user), class: 'avatar' %>
+  </div>
+  <% if @meeting.approved_message? %>
+    <div class="chat-text">
+      <%= cl_image_tag dynamic_avatar(@meeting.teacher), class: 'avatar' %>
+      <div class="chat1">
+        <%= @meeting.approved_message %>
+      </div>
+    </div>
+  <% end %>
+<% elsif @meeting.approved_message? && current_user == @meeting.teacher%>
+  <% if @meeting.message? %>
+    <div class="chat-text">
+      <%= cl_image_tag dynamic_avatar(@meeting.student), class: 'avatar' %>
+      <div class="chat1">
+        <%= @meeting.message %>
+      </div>
+    </div>
+  <% end %>
+  <div class="chat-text2">
+    <%= cl_image_tag dynamic_avatar(current_user), class: 'avatar' %>
+    <div class="chat2">
+      <%= @meeting.approved_message %>
+    </div>
+  </div>
+<% end %>
