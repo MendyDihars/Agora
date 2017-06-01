@@ -2,13 +2,14 @@
 
 <div class="container">
   <div class="row">
-  <h4 class="text-center">These users want to learn your skill. Let them know you can help</h4>
+  <h4 class="text-center">These users want to learn <span class="skill_back"><%= current_user.own_skills.first.name.downcase %></span></h4>
+  <h4 class="text-center">Let them know you can help.</h4>
     <% @students.each do |user| %>
       <div class="col-xs-6 col-sm-6 col-md-4">
         <div class="teacher text-center">
           <div class="col-sm-4">
             <div class="profile-teacher">
-              <%= cl_image_tag dynamic_avatar(user), class: "avatar-large" %>
+              <%= link_to cl_image_tag(dynamic_avatar(user), class: "avatar-large"), teacher_path(user) %>
             </div>
           </div>
           <div class="col-sm-8">

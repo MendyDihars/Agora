@@ -20,10 +20,10 @@ module ApplicationHelper
   end
 
   def dont_forget(meeting)
-    unless meeting.validate? && current_user == meeting.student
+    if current_user.can_validate?(meeting)
       "Don't forget to validate your meeting, here"
     else
-      "View details"
+      "Arrange meeting details"
     end
   end
 
