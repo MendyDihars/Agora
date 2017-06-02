@@ -3,7 +3,9 @@ class MeetingsController < ApplicationController
 
   def index
     @meetings_student = current_user.meetings_student
+    @meetings_student = @meetings_student.sort_by { |meet| meet.created_at }.reverse
     @meetings_teacher = current_user.meetings_teacher
+    @meetings_teacher = @meetings_teacher.sort_by { |meet| meet.created_at }.reverse
   end
 
   def show
