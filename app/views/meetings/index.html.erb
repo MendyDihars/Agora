@@ -12,7 +12,7 @@
       <div class="container padded">
         <div class="row">
           <% @meetings_student.each do |meeting|  %>
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-sm-offset-3">
               <div class="contacted-bg">
                 <div class="meeting-info">
                   <div class="meeting-name"><%= link_to "#{meeting.teacher.first_name} #{meeting.teacher.last_name}", teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.teacher.email %>)</span></div>
@@ -49,7 +49,7 @@
       <div class="container padded">
         <div class="row">
           <% @meetings_teacher.each do |meeting|  %>
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-sm-offset-3">
               <div class="contacted-by-bg">
                 <div class="meeting-progress">
                   <div class="meeting-name"><%= link_to "#{meeting.student.first_name} #{meeting.student.last_name}", teacher_path(meeting.teacher) %> <span class="italized-email">(<%= meeting.student.email %>)</span></div>
