@@ -119,7 +119,7 @@ users = [
     age: 28,
     bio: "I can do what you want, I just need to read the doc",
     url: 'https://avatars1.githubusercontent.com/u/26795584?v=3&s=460',
-    email: "girauden@mail.com",
+    email: "giraud.de@gmail.com",
     skill: "Webdesign",
     wanted_skill: "Code"
   },
@@ -156,8 +156,8 @@ users = [
   {
     first_name: "Gilles",
     last_name: 'Aroutzet',
-    age: 16,
-    bio: "I'm a good guy, I love animals... every creatures matters. My goal? Learn a lot of stuff",
+    age: 21,
+    bio: "I’m a cool guy living in Bordeaux. I used to be karate kid in the famous movie, then I spent 15 years in Japan. I love animals, because every creature matters. I’m here to teach karate but also to learn a lot of new things",
     url: "https://avatars2.githubusercontent.com/u/26441375?v=3&s=400",
     email: "garoutzet@mail.com",
     skill: 'Karate',
@@ -254,5 +254,25 @@ users.each do |item|
 end
 puts ""
 puts "Requested skills created"
+
+
+puts 'Setup Demo Day'
+
+ada = User.find_by_first_name("Adalberto")
+harry = User.find_by_first_name("Harry")
+edward = User.find_by_first_name("Edward")
+gilles = User.find_by_first_name("Gilles")
+mendy = User.find_by_first_name("Mendy")
+
+Review.create!(teacher: gilles, student: ada, content: "C'est un super prof ! Je conseille", rating: 5 )
+puts "💌 "
+Review.create!(teacher: gilles, student: harry, content: "Ce mec est magique !", rating: 5 )
+puts "💌 "
+Review.create!(teacher: gilles, student: edward, content: "Wououuuuf ! J'ai pu passer ma ceinture verte grâce à ses conseils", rating: 4 )
+puts "💌 "
+
+date = Date.today - 3
+Meeting.create!(teacher: edward, student: mendy, happen_at: date, approved_at: date, message: "Peut-on se voir pour un cours de Webdesign?", approved_message: "Ouais pas de soucis ! Viens au café La Niche", skill: edward.own_skills.first)
+puts "💌 "
 
 puts "Putain, ca a marché 🎉 "
