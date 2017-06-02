@@ -3,11 +3,11 @@ puts "Destroy all :o "
 Review.destroy_all
 Chat.destroy_all
 Mendie.destroy_all
-Meeting.destroy_all
 UserSkill.destroy_all
 RequestedSkill.destroy_all
-Skill.destroy_all
+Meeting.destroy_all
 User.destroy_all
+Skill.destroy_all
 
 puts "Creating skills"
 
@@ -254,7 +254,6 @@ users.each do |item|
 end
 puts ""
 puts "Requested skills created"
-
 
 puts 'Setup Demo Day'
 
