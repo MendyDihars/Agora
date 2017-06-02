@@ -62,7 +62,7 @@
 
                       <div class="approved-btn">
                         <%= simple_form_for :change_status, url: status_meeting_path(meeting), method: :patch do |f| %>
-                          <%= f.input :approved_message, label: false, placeholder: "Message for teacher" %>
+                          <%= f.input :approved_message, label: false, placeholder: "Enter message" %>
                           <%= f.submit :status, value: 'Confirm', class: 'btn btn-success btn-xs pull-right' %>
                           <div class="rejected-btn">
                             <%= f.submit :status, value: 'Reject', class: 'btn btn-danger btn-xs' %>
