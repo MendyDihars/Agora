@@ -175,11 +175,11 @@ users = [
   },
   {
     first_name: "Edward",
-    last_name: 'Chien',
+    last_name: 'Dupont',
     age: 8,
     bio: "Wouf ! Wouhouuuu Wouf ! ... sorry ... Bark !",
     url: "http://www.ushot.pl/wp-content/uploads/2014/03/William-Wegman-dog-ushot-2.jpg",
-    email: "chien@mail.com",
+    email: "edwardn@mail.com",
     skill: 'Painting',
     wanted_skill: "Guitar"
   },
@@ -263,11 +263,15 @@ edward = User.find_by_first_name("Edward")
 gilles = User.find_by_first_name("Gilles")
 mendy = User.find_by_first_name("Mendy")
 
+puts 'add 8 mendies to Gilles'
+gilles.mendie.balance = 8
+puts "Done"
+
 Review.create!(teacher: gilles, student: ada, content: "C'est un super prof ! Je conseille", rating: 5 )
 puts "💌 "
 Review.create!(teacher: gilles, student: harry, content: "Ce mec est magique !", rating: 5 )
 puts "💌 "
-Review.create!(teacher: gilles, student: edward, content: "Wououuuuf ! J'ai pu passer ma ceinture verte grâce à ses conseils", rating: 4 )
+Review.create!(teacher: gilles, student: edward, content: "J'ai pu passer ma ceinture verte grâce à ses conseils", rating: 4 )
 puts "💌 "
 
 date = Date.today - 3
