@@ -9,6 +9,7 @@ class ChatsController < ApplicationController
     if @chat.save
       ActionCable.server.broadcast("meeting_#{@meeting.id}",
         content: @chat.content,
+        user: @chat.user.id
      )
      head :ok
     else

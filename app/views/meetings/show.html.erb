@@ -1,4 +1,7 @@
-<span visibily="hidden" id='current_page'><%= current_user.id %></span>
+<div class="display-none">
+  <span visibily="hidden" id='current_page'><%= current_user.id %></span>
+  <%= cl_image_tag current_user.photo.path, id: "current-user-picture" %>
+</div>
 <div class="wrapper-meeting-card text-center">
   <div class="meeting-card">
     <%= cl_image_tag @meeting.teacher.photo.path, class: "avatar-large", id: 'teacher-picture' %>
@@ -62,10 +65,10 @@
 
 <% content_for :after_js do %>
   <script>
-    var teacherUser = $("#teacher-picture").attr('src');
-    var studentUser = $("#student-picture").attr('src');
+    var currentUserPicture = $("#current-user-picture").attr('src');
+    var studentPhoto = $("#student-picture").attr('src');
+    var teacherPhoto = $("#teacher-picture").attr('src');
     var currentUserId = <%= current_user.id.to_s %>;
-    var verifyUser = $("#current_page").text();
     var teacherId = <%= @meeting.teacher.id %>;
     var studentId = <%= @meeting.student.id %>;
     App.messages = App.cable.subscriptions.create(
@@ -78,13 +81,19 @@
           console.log("[CONNECTED]");
         },
         received: function(data) {
-          if ( currentUserId == verifyUser ) {
+          if ( currentUserId == data.user ) {
             $("textarea").val("");
-            return $("#new-message").append("<div class='chat-text2'><div class='chat2'>" + data.content + "</div><img class='avatar' src='" + studentUser + "'></div>");
+            return $("#new-message").append("<div class='chat-text2'><div class='chat2'>" + data.content + "</div><img class='avatar' src='" + currentUserPicture + "'></div>");
           }
           else {
-            $("textarea").val("");
-            return $("#new-message").append("<div class='chat-text'><img class='avatar' src='" + studentUser + "'><div class='chat1'>" + data.content + "</div></div>");
+            if ( currentUserId == teacherId ) {
+              $("textarea").val("");
+              return $("#new-message").append("<div class='chat-text'><img class='avatar' src='" + studentPhoto + "'><div   class='chat1'>" + data.content + "</div></div>");
+            }
+            else {
+              $("textarea").val("");
+              return $("#new-message").append("<div class='chat-text'><img class='avatar' src='" + teacherPhoto + "'><div   class='chat1'>" + data.content + "</div></div>");
+            }
           }
         },
       }
