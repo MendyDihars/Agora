@@ -7,7 +7,11 @@ class ChatsController < ApplicationController
     @chat.meeting = @meeting
     @chat.user = current_user
     if @chat.save
-      redirect_to meeting_path(@meeting)
+      ActionCable.server.broadcast("meeting_#{@meeting.id}",
+        content: @chat.content,
+        user: @chat.user.id
+     )
+     head :ok
     else
       render 'meetings/show'
     end
