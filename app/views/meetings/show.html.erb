@@ -83,16 +83,16 @@
         received: function(data) {
           if ( currentUserId == data.user ) {
             $("textarea").val("");
-            return $("#new-message").append("<div class='chat-text2'><div class='chat2'>" + data.content + "</div><img class='avatar' src='" + currentUserPicture + "'></div>");
+            return $("#new-message").append("<div class='chat-text2 slideUp'><div class='chat2'>" + data.content + "</div><img class='avatar' src='" + currentUserPicture + "'></div>");
           }
           else {
             if ( currentUserId == teacherId ) {
               $("textarea").val("");
-              return $("#new-message").append("<div class='chat-text'><img class='avatar' src='" + studentPhoto + "'><div   class='chat1'>" + data.content + "</div></div>");
+              return $("#new-message").append("<div class='chat-text slideUp'><img class='avatar' src='" + studentPhoto + "'><div   class='chat1 slideUp'>" + data.content + "</div></div>");
             }
             else {
               $("textarea").val("");
-              return $("#new-message").append("<div class='chat-text'><img class='avatar' src='" + teacherPhoto + "'><div   class='chat1'>" + data.content + "</div></div>");
+              return $("#new-message").append("<div class='chat-text slideUp'><img class='avatar' src='" + teacherPhoto + "'><div   class='chat1'>" + data.content + "</div></div>");
             }
           }
         },
